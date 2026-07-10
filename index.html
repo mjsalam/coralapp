@@ -178,124 +178,6 @@
     .badge-label { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
     .badge-label small { font-size: 10px; font-weight: 400; opacity: 0.7; letter-spacing: 0.04em; }
 
-    /* ── Screenshots ───────────────────────────────────────── */
-    .screenshots {
-      padding: 88px 0 96px;
-      background:
-        linear-gradient(180deg, rgba(43,122,138,0.08), transparent 28%),
-        var(--bg);
-    }
-
-    .screenshots-head {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 48px;
-    }
-
-    .screenshots-head h2 {
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-top: 10px;
-      text-wrap: balance;
-    }
-
-    .screenshots-head p {
-      margin-top: 14px;
-      color: var(--ink-2);
-    }
-
-    .shot-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .shot-card {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%),
-        var(--surface);
-      border: 1px solid var(--rule);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(13,25,32,0.10);
-    }
-
-    .shot-card figure {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .shot-frame {
-      padding: 18px;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top, rgba(43,122,138,0.15), transparent 54%),
-        linear-gradient(180deg, rgba(13,25,32,0.03), rgba(13,25,32,0));
-    }
-
-    .shot-frame img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 16px;
-      border: 1px solid rgba(13,25,32,0.12);
-    }
-
-    .shot-frame.phone {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .shot-frame.phone img {
-      width: auto;
-      height: 100%;
-      max-width: 74%;
-      object-fit: contain;
-      border-radius: 36px;
-      border: 10px solid #0D1920;
-      box-shadow: 0 18px 44px rgba(13,25,32,0.22);
-    }
-
-    .shot-copy {
-      padding: 22px 24px 24px;
-      flex: 1;
-    }
-
-    .shot-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--teal);
-    }
-
-    .shot-copy h3 {
-      font-size: 22px;
-      line-height: 1.25;
-      margin-top: 10px;
-    }
-
-    .shot-copy p {
-      margin-top: 10px;
-      color: var(--ink-2);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .shot-copy.compact h3 {
-      font-size: 19px;
-    }
-
     /* ── What's inside ──────────────────────────────────────── */
     .features {
       padding: 96px 0;
@@ -333,18 +215,52 @@
 
     .feature-card {
       background: var(--bg);
-      padding: 36px 32px;
+      padding: 22px 22px 28px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      background: var(--surface);
-      display: flex;
+    .feature-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top, rgba(43,122,138,0.15), transparent 56%),
+        linear-gradient(180deg, rgba(13,25,32,0.04), rgba(13,25,32,0.01));
+      border: 1px solid rgba(13,25,32,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+
+    .feature-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .feature-platforms {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      display: inline-flex;
+      gap: 8px;
+      z-index: 1;
+    }
+
+    .feature-pill {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(13,25,32,0.75);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .feature-card h3 {
@@ -357,6 +273,7 @@
       font-size: 15px;
       color: var(--ink-2);
       line-height: 1.6;
+      margin-top: auto;
     }
 
     /* ── Privacy section ────────────────────────────────────── */
@@ -505,38 +422,18 @@
     }
 
     @media (max-width: 960px) {
-      .shot-grid {
+      .feature-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      
-      .shot-card:first-child {
-        grid-column: 1 / -1;
       }
     }
 
     @media (max-width: 640px) {
-      .shot-grid {
+      .feature-grid {
         grid-template-columns: 1fr;
       }
 
       .hero {
         padding-top: 88px;
-      }
-
-      .shot-card {
-        border-radius: 20px;
-      }
-
-      .shot-frame {
-        padding: 14px;
-      }
-
-      .shot-copy {
-        padding: 18px 18px 20px;
-      }
-
-      .shot-copy h3 {
-        font-size: 20px;
       }
     }
 
@@ -602,58 +499,6 @@
   </div>
 </section>
 
-<!-- ── Screenshots ───────────────────────────────────────────── -->
-<section class="screenshots">
-  <div class="wrap-wide">
-    <div class="screenshots-head">
-      <span class="label">See Coral</span>
-      <h2>Built for real work on Mac and iPhone.</h2>
-      <p>Plan the day, manage tasks, and keep projects in context without splitting your life across five different apps.</p>
-    </div>
-
-    <div class="shot-grid">
-      <article class="shot-card">
-        <figure>
-          <div class="shot-frame">
-            <img src="assets/screenshots/planner-mac.png" alt="Coral Planner on Mac showing a timeline with events and tasks">
-          </div>
-          <figcaption class="shot-copy compact">
-            <span class="shot-kicker">Planner</span>
-            <h3>Your schedule and your tasks, in the same place.</h3>
-            <p>The Planner combines calendar time, backlog, and today’s work so you can place tasks where they actually fit.</p>
-          </figcaption>
-        </figure>
-      </article>
-
-      <article class="shot-card">
-        <figure>
-          <div class="shot-frame">
-            <img src="assets/screenshots/tasks-mac.png" alt="Coral task list on Mac showing grouped tasks with dates, projects, and priorities">
-          </div>
-          <figcaption class="shot-copy compact">
-            <span class="shot-kicker">Tasks</span>
-            <h3>A task view with real context.</h3>
-            <p>See dates, projects, flags, and priorities inline instead of buried behind clicks.</p>
-          </figcaption>
-        </figure>
-      </article>
-
-      <article class="shot-card">
-        <figure>
-          <div class="shot-frame phone">
-            <img src="assets/screenshots/planner-iphone.png" alt="Coral Planner on iPhone showing the daily planning interface">
-          </div>
-          <figcaption class="shot-copy compact">
-            <span class="shot-kicker">iPhone</span>
-            <h3>Carry the same system with you.</h3>
-            <p>Coral’s mobile view keeps planning and capture close at hand without turning into a stripped-down companion app.</p>
-          </figcaption>
-        </figure>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ── Features ───────────────────────────────────────────────── -->
 <section class="features">
   <div class="wrap-wide">
@@ -665,71 +510,54 @@
 
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M4 4h12v2H4V4Zm0 4h12v2H4V8Zm0 4h8v2H4v-2Z" fill="var(--coral)"/>
-          </svg>
+        <div class="feature-media">
+          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
+          <img src="assets/feature-grid/notes-writing.png" alt="Coral notes and writing view shown on Mac and iPhone">
         </div>
         <h3>Notes &amp; Writing</h3>
         <p>A fast block editor with inline markdown, code blocks, callouts, and toggles. Organize notes into folders or link them to projects.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <rect x="3" y="8" width="14" height="2" rx="1" fill="var(--coral)" opacity="0.4"/>
-            <rect x="3" y="3" width="14" height="2" rx="1" fill="var(--coral)"/>
-            <path d="M3 13h2v2H3v-2Zm4 0h10v2H7v-2Z" fill="var(--coral)" opacity="0.7"/>
-          </svg>
+        <div class="feature-media">
+          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
+          <img src="assets/feature-grid/tasks-projects.png" alt="Coral task and project management view shown on Mac and iPhone">
         </div>
         <h3>Tasks &amp; Projects</h3>
         <p>Tasks live inside notes — no separate system to maintain. Group them under projects, assign deadlines, track status, and see progress at a glance.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="7" stroke="var(--teal)" stroke-width="1.5" fill="none"/>
-            <circle cx="10" cy="10" r="3" fill="var(--teal)" opacity="0.5"/>
-            <path d="M10 3v2M10 15v2M3 10h2M15 10h2" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <div class="feature-media">
+          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
+          <img src="assets/feature-grid/areas-life-balance.png" alt="Coral areas and life balance dashboard shown on Mac and iPhone">
         </div>
         <h3>Areas &amp; Life Balance</h3>
         <p>Organize everything into life areas — Work, Health, Finance, Personal — and see a radar chart of where you're spending your energy.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <rect x="3" y="4" width="14" height="13" rx="2" stroke="var(--teal)" stroke-width="1.5" fill="none"/>
-            <path d="M7 2v4M13 2v4M3 9h14" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="6" y="12" width="3" height="3" rx="0.5" fill="var(--teal)" opacity="0.5"/>
-          </svg>
+        <div class="feature-media">
+          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
+          <img src="assets/feature-grid/calendar-planner.png" alt="Coral calendar and planner view shown on Mac and iPhone">
         </div>
         <h3>Calendar &amp; Planner</h3>
         <p>A daily and weekly planner that connects to your system calendar. Plan your day alongside your notes and tasks — everything in context.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 15V9m3 6V7m3 8V5m3 10v-5" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <div class="feature-media">
+          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
+          <img src="assets/feature-grid/habits-streaks.png" alt="Coral habits and streak tracking view shown on Mac and iPhone">
         </div>
         <h3>Habits &amp; Streaks</h3>
         <p>Build routines with daily habits, streak tracking, and completion views. Habits live in the same world as your notes and tasks.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="6" cy="7" r="2" fill="var(--teal)" opacity="0.6"/>
-            <circle cx="14" cy="7" r="2" fill="var(--coral)" opacity="0.6"/>
-            <circle cx="10" cy="14" r="2" fill="var(--teal)"/>
-            <line x1="7.7" y1="8.4" x2="12.3" y2="8.4" stroke="var(--on-deep-2)" stroke-width="1" opacity="0.3"/>
-            <line x1="6.8" y1="8.9" x2="9.4" y2="12.4" stroke="var(--on-deep-2)" stroke-width="1" opacity="0.3"/>
-            <line x1="13.2" y1="8.9" x2="10.6" y2="12.4" stroke="var(--on-deep-2)" stroke-width="1" opacity="0.3"/>
-          </svg>
+        <div class="feature-media">
+          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
+          <img src="assets/feature-grid/the-reef.png" alt="Coral Reef knowledge graph and backlinks view shown on Mac and iPhone">
         </div>
         <h3>The Reef</h3>
         <p>An organic knowledge graph that surfaces connections between your notes — backlinks, clusters, orphaned ideas — visualized as a living map.</p>
