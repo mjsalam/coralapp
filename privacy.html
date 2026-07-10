@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Coral</title>
+  <meta name="description" content="Coral collects no personal data. Your notes and tasks stay on your device, synced through your own iCloud account.">
+  <style>
+    :root {
+      --bg:      #FAF8F5;
+      --ink:     #1C1917;
+      --ink-2:   #6B6259;
+      --ink-3:   #A09890;
+      --coral:   #CC4638;
+      --surface: #F0EAE3;
+      --rule:    #DDD6CE;
+      --bg-deep: #0D1920;
+      --on-deep: #EDE8E3;
+      --on-deep-2: #7A8E9A;
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+              'Helvetica Neue', system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #0D1920;
+        --ink:     #EDE8E3;
+        --ink-2:   #8A8078;
+        --ink-3:   #5A5450;
+        --coral:   #E05A4A;
+        --surface: #142230;
+        --rule:    #1E2D3A;
+        --bg-deep: #060F15;
+      }
+    }
+    :root[data-theme="light"] {
+      --bg: #FAF8F5; --ink: #1C1917; --ink-2: #6B6259; --ink-3: #A09890;
+      --coral: #CC4638; --surface: #F0EAE3; --rule: #DDD6CE;
+      --bg-deep: #0D1920; --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0D1920; --ink: #EDE8E3; --ink-2: #8A8078; --ink-3: #5A5450;
+      --coral: #E05A4A; --surface: #142230; --rule: #1E2D3A;
+      --bg-deep: #060F15; --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.7; }
+    a { color: var(--coral); }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--bg-deep);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-wordmark {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--on-deep);
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--on-deep-2);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--on-deep); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: var(--bg-deep);
+      color: var(--on-deep);
+      padding: 56px 24px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-header .label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .page-header .meta {
+      font-size: 14px;
+      color: var(--on-deep-2);
+    }
+
+    /* ── Document ── */
+    .doc {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* summary box */
+    .summary-box {
+      background: var(--surface);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 56px;
+    }
+    .summary-box p {
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .summary-box strong { color: var(--coral); font-weight: 600; }
+
+    /* sections */
+    .doc-section {
+      margin-bottom: 52px;
+    }
+    .doc-section + .doc-section {
+      border-top: 1px solid var(--rule);
+      padding-top: 48px;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink); font-size: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 14px 0;
+      padding-left: 20px;
+    }
+    li {
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    /* inline emphasis */
+    .pill {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 13px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--ink-2);
+    }
+
+    /* contact block */
+    .contact-block {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+    .contact-block p { font-size: 15px; }
+    .contact-block a { font-weight: 500; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-deep);
+      color: var(--on-deep-2);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: var(--on-deep-2); }
+    footer a:hover { color: var(--on-deep); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <svg width="20" height="20" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+      <circle cx="22" cy="22" r="5.5" fill="#CC4638"/>
+      <line x1="22" y1="16.5" x2="22" y2="7" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="22" cy="5.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="22" y1="27.5" x2="22" y2="37" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="22" cy="38.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="16.5" y1="22" x2="7" y2="22" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="5.5" cy="22" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="27.5" y1="22" x2="37" y2="22" stroke="#2B7A8A" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="38.5" cy="22" r="2.5" fill="#2B7A8A" fill-opacity="0.7"/>
+    </svg>
+    <span class="nav-wordmark">Coral</span>
+  </a>
+  <a class="nav-back" href="index.html">← Back</a>
+</nav>
+
+<header class="page-header">
+  <div style="max-width:680px;margin:0 auto;">
+    <span class="label">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective July 10, 2026 · Last updated July 10, 2026</p>
+  </div>
+</header>
+
+<main class="doc">
+
+  <div class="summary-box">
+    <p><strong>The short version:</strong> Coral collects no personal data. Your notes, tasks, and habits live on your device and sync through your own iCloud account. We never see your content, we don't run analytics, and we don't sell anything.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">01</span>
+    <h2>Who we are</h2>
+    <p>Coral is an independent app developed by Mark Salam. You can reach us at <a href="mailto:support@coralapp.io">support@coralapp.io</a>.</p>
+    <p>This policy covers the Coral app for macOS and iOS.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">02</span>
+    <h2>What data Coral collects</h2>
+    <p><strong>Nothing.</strong> Coral does not collect, transmit, or store any personal data on our servers — because we don't have servers.</p>
+    <p>All data you create in Coral (notes, tasks, projects, habits, calendar entries) is stored:</p>
+    <ul>
+      <li><strong>Locally</strong> in a SQLite database on your device, inside the app's private container.</li>
+      <li><strong>In your iCloud account</strong>, if you have iCloud sync enabled — under your control, governed by Apple's privacy practices.</li>
+    </ul>
+    <p>We have no access to your iCloud data. Apple's infrastructure handles the sync.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">03</span>
+    <h2>Encryption</h2>
+    <p>Coral encrypts sensitive content on your device using <strong>AES-256-GCM</strong> before it is written to disk or synced. Encryption keys are derived via HKDF-SHA256 and stored in your device's Keychain — not accessible to us.</p>
+    <p>Encrypted fields are marked internally with the prefix <span class="pill">enc:v1:</span> and are never transmitted in plaintext.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">04</span>
+    <h2>Analytics and tracking</h2>
+    <p>Coral contains <strong>no analytics, no advertising SDKs, and no behavioral tracking</strong> of any kind.</p>
+    <p>We do not use:</p>
+    <ul>
+      <li>Third-party analytics (Google Analytics, Mixpanel, Amplitude, etc.)</li>
+      <li>Advertising networks or identifiers</li>
+      <li>Crash reporters that transmit personally identifiable information</li>
+      <li>Session recording or heatmap tools</li>
+    </ul>
+    <p>If crash reporting is added in a future version, it will be opt-in and will transmit only anonymized diagnostic information — no note content, no identifiers.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">05</span>
+    <h2>System permissions</h2>
+    <p>Coral requests access to certain system features only when you use them:</p>
+    <ul>
+      <li><strong>Calendar</strong> — to display your events alongside your planner. Read and write access, only if you grant it.</li>
+      <li><strong>Reminders</strong> — to import tasks from Reminders. Optional.</li>
+      <li><strong>Location</strong> — only if you choose to tag a note or entry with a location. Never accessed in the background.</li>
+      <li><strong>Health</strong> (iOS) — to log habit completions as health data. Optional; requires explicit permission.</li>
+    </ul>
+    <p>None of this data leaves your device except through your own iCloud account.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">06</span>
+    <h2>iCloud sync</h2>
+    <p>If you enable iCloud sync, your data is stored in your private CloudKit container (<span class="pill">iCloud.com.atoam.Coral</span>). This is your personal iCloud storage — Coral has no access to it. Apple's privacy policy governs how iCloud data is handled.</p>
+    <p>iCloud sync is optional. Coral works fully offline without it.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">07</span>
+    <h2>Data sharing</h2>
+    <p>We do not sell, rent, or share your data with any third party. There are no third parties that receive your data as part of Coral's operation.</p>
+    <p>The only exception would be if required by law — in which case we could only produce what we have: nothing, because we don't store your data.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">08</span>
+    <h2>Children's privacy</h2>
+    <p>Coral is not directed at children under 13. We do not knowingly collect information from children. If you believe a child has provided information through Coral, please contact us so we can address it.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">09</span>
+    <h2>Changes to this policy</h2>
+    <p>If we make material changes to this policy, we'll update the date at the top of this page and, where appropriate, notify you within the app. We will never retroactively weaken your privacy protections.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">10</span>
+    <h2>Contact</h2>
+    <p>Questions about this policy? We're easy to reach.</p>
+    <div class="contact-block">
+      <p><strong>Coral Support</strong><br>
+      <a href="mailto:support@coralapp.io">support@coralapp.io</a></p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p><a href="index.html">Coral</a> · <a href="privacy.html">Privacy Policy</a> · © 2026</p>
+</footer>
+
+</body>
+</html>
