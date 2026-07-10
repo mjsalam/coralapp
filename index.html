@@ -207,14 +207,9 @@
 
     .shot-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
       align-items: stretch;
-    }
-
-    .shot-stack {
-      display: grid;
-      gap: 24px;
     }
 
     .shot-card {
@@ -228,11 +223,15 @@
     }
 
     .shot-card figure {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .shot-frame {
-      padding: 18px 18px 0;
+      padding: 18px;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
       background:
         radial-gradient(circle at top, rgba(43,122,138,0.15), transparent 54%),
         linear-gradient(180deg, rgba(13,25,32,0.03), rgba(13,25,32,0));
@@ -241,21 +240,24 @@
     .shot-frame img {
       display: block;
       width: 100%;
-      height: auto;
-      border-radius: 16px 16px 0 0;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 16px;
       border: 1px solid rgba(13,25,32,0.12);
     }
 
     .shot-frame.phone {
-      padding: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100%;
     }
 
     .shot-frame.phone img {
-      width: min(100%, 320px);
+      width: auto;
+      height: 100%;
+      max-width: 74%;
+      object-fit: contain;
       border-radius: 36px;
       border: 10px solid #0D1920;
       box-shadow: 0 18px 44px rgba(13,25,32,0.22);
@@ -263,6 +265,7 @@
 
     .shot-copy {
       padding: 22px 24px 24px;
+      flex: 1;
     }
 
     .shot-kicker {
@@ -503,15 +506,19 @@
 
     @media (max-width: 960px) {
       .shot-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .shot-frame.phone {
-        min-height: 0;
+      
+      .shot-card:first-child {
+        grid-column: 1 / -1;
       }
     }
 
     @media (max-width: 640px) {
+      .shot-grid {
+        grid-template-columns: 1fr;
+      }
+
       .hero {
         padding-top: 88px;
       }
@@ -521,11 +528,7 @@
       }
 
       .shot-frame {
-        padding: 14px 14px 0;
-      }
-
-      .shot-frame.phone {
-        padding: 18px;
+        padding: 14px;
       }
 
       .shot-copy {
@@ -614,7 +617,7 @@
           <div class="shot-frame">
             <img src="assets/screenshots/planner-mac.png" alt="Coral Planner on Mac showing a timeline with events and tasks">
           </div>
-          <figcaption class="shot-copy">
+          <figcaption class="shot-copy compact">
             <span class="shot-kicker">Planner</span>
             <h3>Your schedule and your tasks, in the same place.</h3>
             <p>The Planner combines calendar time, backlog, and today’s work so you can place tasks where they actually fit.</p>
@@ -622,33 +625,31 @@
         </figure>
       </article>
 
-      <div class="shot-stack">
-        <article class="shot-card">
-          <figure>
-            <div class="shot-frame">
-              <img src="assets/screenshots/tasks-mac.png" alt="Coral task list on Mac showing grouped tasks with dates, projects, and priorities">
-            </div>
-            <figcaption class="shot-copy compact">
-              <span class="shot-kicker">Tasks</span>
-              <h3>A task view with real context.</h3>
-              <p>See dates, projects, flags, and priorities inline instead of buried behind clicks.</p>
-            </figcaption>
-          </figure>
-        </article>
+      <article class="shot-card">
+        <figure>
+          <div class="shot-frame">
+            <img src="assets/screenshots/tasks-mac.png" alt="Coral task list on Mac showing grouped tasks with dates, projects, and priorities">
+          </div>
+          <figcaption class="shot-copy compact">
+            <span class="shot-kicker">Tasks</span>
+            <h3>A task view with real context.</h3>
+            <p>See dates, projects, flags, and priorities inline instead of buried behind clicks.</p>
+          </figcaption>
+        </figure>
+      </article>
 
-        <article class="shot-card">
-          <figure>
-            <div class="shot-frame phone">
-              <img src="assets/screenshots/planner-iphone.png" alt="Coral Planner on iPhone showing the daily planning interface">
-            </div>
-            <figcaption class="shot-copy compact">
-              <span class="shot-kicker">iPhone</span>
-              <h3>Carry the same system with you.</h3>
-              <p>Coral’s mobile view keeps planning and capture close at hand without turning into a stripped-down companion app.</p>
-            </figcaption>
-          </figure>
-        </article>
-      </div>
+      <article class="shot-card">
+        <figure>
+          <div class="shot-frame phone">
+            <img src="assets/screenshots/planner-iphone.png" alt="Coral Planner on iPhone showing the daily planning interface">
+          </div>
+          <figcaption class="shot-copy compact">
+            <span class="shot-kicker">iPhone</span>
+            <h3>Carry the same system with you.</h3>
+            <p>Coral’s mobile view keeps planning and capture close at hand without turning into a stripped-down companion app.</p>
+          </figcaption>
+        </figure>
+      </article>
     </div>
   </div>
 </section>
