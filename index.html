@@ -178,6 +178,121 @@
     .badge-label { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
     .badge-label small { font-size: 10px; font-weight: 400; opacity: 0.7; letter-spacing: 0.04em; }
 
+    /* ── Screenshots ───────────────────────────────────────── */
+    .screenshots {
+      padding: 88px 0 96px;
+      background:
+        linear-gradient(180deg, rgba(43,122,138,0.08), transparent 28%),
+        var(--bg);
+    }
+
+    .screenshots-head {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .screenshots-head h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 10px;
+      text-wrap: balance;
+    }
+
+    .screenshots-head p {
+      margin-top: 14px;
+      color: var(--ink-2);
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .shot-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .shot-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%),
+        var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(13,25,32,0.10);
+    }
+
+    .shot-card figure {
+      display: block;
+    }
+
+    .shot-frame {
+      padding: 18px 18px 0;
+      background:
+        radial-gradient(circle at top, rgba(43,122,138,0.15), transparent 54%),
+        linear-gradient(180deg, rgba(13,25,32,0.03), rgba(13,25,32,0));
+    }
+
+    .shot-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px 16px 0 0;
+      border: 1px solid rgba(13,25,32,0.12);
+    }
+
+    .shot-frame.phone {
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100%;
+    }
+
+    .shot-frame.phone img {
+      width: min(100%, 320px);
+      border-radius: 36px;
+      border: 10px solid #0D1920;
+      box-shadow: 0 18px 44px rgba(13,25,32,0.22);
+    }
+
+    .shot-copy {
+      padding: 22px 24px 24px;
+    }
+
+    .shot-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .shot-copy h3 {
+      font-size: 22px;
+      line-height: 1.25;
+      margin-top: 10px;
+    }
+
+    .shot-copy p {
+      margin-top: 10px;
+      color: var(--ink-2);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .shot-copy.compact h3 {
+      font-size: 19px;
+    }
+
     /* ── What's inside ──────────────────────────────────────── */
     .features {
       padding: 96px 0;
@@ -386,6 +501,42 @@
       text-align: center;
     }
 
+    @media (max-width: 960px) {
+      .shot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shot-frame.phone {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 88px;
+      }
+
+      .shot-card {
+        border-radius: 20px;
+      }
+
+      .shot-frame {
+        padding: 14px 14px 0;
+      }
+
+      .shot-frame.phone {
+        padding: 18px;
+      }
+
+      .shot-copy {
+        padding: 18px 18px 20px;
+      }
+
+      .shot-copy h3 {
+        font-size: 20px;
+      }
+    }
+
     /* ── Reduced motion ─────────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -445,6 +596,60 @@
         App Store for iPhone
       </span>
     </a>
+  </div>
+</section>
+
+<!-- ── Screenshots ───────────────────────────────────────────── -->
+<section class="screenshots">
+  <div class="wrap-wide">
+    <div class="screenshots-head">
+      <span class="label">See Coral</span>
+      <h2>Built for real work on Mac and iPhone.</h2>
+      <p>Plan the day, manage tasks, and keep projects in context without splitting your life across five different apps.</p>
+    </div>
+
+    <div class="shot-grid">
+      <article class="shot-card">
+        <figure>
+          <div class="shot-frame">
+            <img src="assets/screenshots/planner-mac.png" alt="Coral Planner on Mac showing a timeline with events and tasks">
+          </div>
+          <figcaption class="shot-copy">
+            <span class="shot-kicker">Planner</span>
+            <h3>Your schedule and your tasks, in the same place.</h3>
+            <p>The Planner combines calendar time, backlog, and today’s work so you can place tasks where they actually fit.</p>
+          </figcaption>
+        </figure>
+      </article>
+
+      <div class="shot-stack">
+        <article class="shot-card">
+          <figure>
+            <div class="shot-frame">
+              <img src="assets/screenshots/tasks-mac.png" alt="Coral task list on Mac showing grouped tasks with dates, projects, and priorities">
+            </div>
+            <figcaption class="shot-copy compact">
+              <span class="shot-kicker">Tasks</span>
+              <h3>A task view with real context.</h3>
+              <p>See dates, projects, flags, and priorities inline instead of buried behind clicks.</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="shot-card">
+          <figure>
+            <div class="shot-frame phone">
+              <img src="assets/screenshots/planner-iphone.png" alt="Coral Planner on iPhone showing the daily planning interface">
+            </div>
+            <figcaption class="shot-copy compact">
+              <span class="shot-kicker">iPhone</span>
+              <h3>Carry the same system with you.</h3>
+              <p>Coral’s mobile view keeps planning and capture close at hand without turning into a stripped-down companion app.</p>
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
