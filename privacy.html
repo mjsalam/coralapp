@@ -223,7 +223,7 @@
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective July 10, 2026 · Last updated July 10, 2026</p>
+    <p class="meta">Effective July 10, 2026 · Last updated September 12, 2026</p>
   </div>
 </header>
 
@@ -255,8 +255,8 @@
   <div class="doc-section">
     <span class="section-num">03</span>
     <h2>Encryption</h2>
-    <p>Coral encrypts sensitive content on your device using <strong>AES-256-GCM</strong> before it is written to disk or synced. Encryption keys are derived via HKDF-SHA256 and stored in your device's Keychain — not accessible to us.</p>
-    <p>Encrypted fields are marked internally with the prefix <span class="pill">enc:v1:</span> and are never transmitted in plaintext.</p>
+    <p>Your note and task content is protected end to end when it syncs: Coral stores it in your private iCloud database using CloudKit's encrypted fields, which Apple encrypts with keys held only on your own devices — not by Apple's servers and not by us.</p>
+    <p>On your devices, Coral's database lives inside the app's private container and is protected by the system's device encryption (your passcode or password, Secure Enclave). Metadata such as due dates, labels and project assignments is stored alongside your content in the same private iCloud database.</p>
   </div>
 
   <div class="doc-section">
