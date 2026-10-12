@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — Coral</title>
-  <meta name="description" content="Coral collects no personal data. Your notes and tasks stay on your device, synced through your own iCloud account.">
+  <meta name="description" content="Coral has no account, no ads, no analytics and no tracking. Your notes, tasks and habits stay on your devices and, with Coral Pro, sync through your own iCloud with end-to-end encryption.">
   <style>
     :root {
       --bg:      #FAF8F5;
@@ -223,97 +223,106 @@
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective July 10, 2026 · Last updated September 12, 2026</p>
+    <p class="meta">Effective October 12, 2026 · Last updated October 12, 2026</p>
   </div>
 </header>
 
 <main class="doc">
 
   <div class="summary-box">
-    <p><strong>The short version:</strong> Coral collects no personal data. Your notes, tasks, and habits live on your device and sync through your own iCloud account. We never see your content, we don't run analytics, and we don't sell anything.</p>
+    <p><strong>The short version:</strong> Coral has no account, no ads, no analytics and no tracking, and we have no servers. Your notes, tasks and habits live on your devices and, with Coral Pro, sync through your own iCloud, with your note and task content end-to-end encrypted. A few features you choose to use talk to outside services — the weather, picture search, link cards and AI writing help — and this page says exactly what they send.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">01</span>
     <h2>Who we are</h2>
-    <p>Coral is an independent app developed by Mark Salam. You can reach us at <a href="mailto:support@getcoralapp.com">support@getcoralapp.com</a>.</p>
-    <p>This policy covers the Coral app for macOS and iOS.</p>
+    <p>Coral is an independent app made by Mark Salam. You can reach us at <a href="mailto:support@getcoralapp.com">support@getcoralapp.com</a>.</p>
+    <p>This policy covers Coral for Mac and iPhone, its Safari extension, its share extension and its widgets.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">02</span>
-    <h2>What data Coral collects</h2>
-    <p><strong>Nothing.</strong> Coral does not collect, transmit, or store any personal data on our servers — because we don't have servers.</p>
-    <p>All data you create in Coral (notes, tasks, projects, habits, calendar entries) is stored:</p>
-    <ul>
-      <li><strong>Locally</strong> in a SQLite database on your device, inside the app's private container.</li>
-      <li><strong>In your iCloud account</strong>, if you have iCloud sync enabled — under your control, governed by Apple's privacy practices.</li>
-    </ul>
-    <p>We have no access to your iCloud data. Apple's infrastructure handles the sync.</p>
+    <h2>What stays with you</h2>
+    <p>Everything you make in Coral — notes, tasks, projects, areas, habits, entries and pictures — is stored on your device, inside Coral's private app container, protected by your device's own encryption. We never receive it.</p>
+    <p>On iPhone, Coral's database, the automatic backups Coral keeps of it, and the snapshot its widgets read are excluded from iCloud Backup.</p>
+    <p>The Safari extension and share extension only act when you use them: they save what you share — from Safari, a page's title, address, description, any text you selected and the page's text — into Coral on your device, and send it nowhere else. Files you export, such as notes or an encrypted backup, go only where you save them.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">03</span>
-    <h2>Encryption</h2>
-    <p>Your note and task content is protected end to end when it syncs: Coral stores it in your private iCloud database using CloudKit's encrypted fields, which Apple encrypts with keys held only on your own devices — not by Apple's servers and not by us.</p>
-    <p>On your devices, Coral's database lives inside the app's private container and is protected by the system's device encryption (your passcode or password, Secure Enclave). Metadata such as due dates, labels and project assignments is stored alongside your content in the same private iCloud database.</p>
+    <h2>Sync and encryption (Coral Pro)</h2>
+    <p>With Coral Pro, Coral syncs through your private iCloud database (<span class="pill">iCloud.com.atoam.Coral</span>). We have no access to it.</p>
+    <p>Your note and task content — note titles and text, including the text of every task — is end-to-end encrypted, with keys kept in your iCloud Keychain that only your own devices can unlock, so neither Apple nor we can read it.</p>
+    <p>Not everything has that extra layer. Other details — for example the names of your projects, areas, folders, habits, goals and Currents, due dates and other dates, labels, which project or area something belongs to, some pictures and files attached to notes, and the notes and list name a task brought in from Apple Reminders — are stored in the same private database protected by iCloud's standard encryption.</p>
+    <p>Without Pro, Coral works fully on each device with no sync.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">04</span>
-    <h2>Analytics and tracking</h2>
-    <p>Coral contains <strong>no analytics, no advertising SDKs, and no behavioral tracking</strong> of any kind.</p>
-    <p>We do not use:</p>
+    <h2>Outside services, and what they receive</h2>
+    <p>These services receive your device's IP address with each request, as any website does. None of them receive an identifier from Coral, and Coral never sends them your notes except where stated below.</p>
     <ul>
-      <li>Third-party analytics (Google Analytics, Mixpanel, Amplitude, etc.)</li>
-      <li>Advertising networks or identifiers</li>
-      <li>Crash reporters that transmit personally identifiable information</li>
-      <li>Session recording or heatmap tools</li>
+      <li><strong>Weather on Today.</strong> Weather is off until you turn it on, in Settings or with “Show weather” on Today. Only then does Coral estimate your approximate location from your IP address using ipapi.co (or ipinfo.io if that fails), and ask Open-Meteo for the forecast at that location. Coral never asks for your device's location. Turn weather off and these requests stop.</li>
+      <li><strong>Pictures.</strong> When you search for a picture, your search words go to Unsplash. Pictures from Unsplash, including Coral's built-in banner pictures, load from Unsplash's servers.</li>
+      <li><strong>Link cards.</strong> When a note shows a link as a card or with its site's icon, or when you paste a link and Coral fills in its title, Coral fetches the title, description, icon and image directly from that website. Links are shown as cards by default; show a link as plain text to avoid this.</li>
+      <li><strong>AI writing help (Coral Pro).</strong> Only when you ask, Coral sends what that action needs — the text you selected, a note's title and text for a summary, or your task and habit names for planning — to your AI provider: the one you set up, whether Anthropic, another address you enter, or a model server on your own computer or network, using your own key where it needs one. Coral asks before the first request, naming that provider, and asks again if you switch to a different one. Apple Health data is never sent to AI: habits linked to Health are left out. Your AI provider's own privacy policy governs what it keeps. We never see these requests.</li>
+      <li><strong>Addresses you enter.</strong> If you give Coral a web address yourself — a picture's address or a theme catalog — Coral loads it from that address.</li>
+      <li><strong>Purchases.</strong> Coral Pro is sold through the App Store and handled entirely by Apple. We don't receive your payment details.</li>
     </ul>
-    <p>If crash reporting is added in a future version, it will be opt-in and will transmit only anonymized diagnostic information — no note content, no identifiers.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">05</span>
     <h2>System permissions</h2>
-    <p>Coral requests access to certain system features only when you use them:</p>
+    <p>Coral asks for these only when you use the feature, and works without them.</p>
     <ul>
-      <li><strong>Calendar</strong> — to display your events alongside your planner. Read and write access, only if you grant it.</li>
-      <li><strong>Reminders</strong> — to import tasks from Reminders. Optional.</li>
-      <li><strong>Location</strong> — only if you choose to tag a note or entry with a location. Never accessed in the background.</li>
-      <li><strong>Health</strong> (iOS) — to log habit completions as health data. Optional; requires explicit permission.</li>
+      <li><strong>Calendar</strong> — to show your events beside your tasks and, when you choose, add, change or delete them.</li>
+      <li><strong>Reminders</strong> — to bring reminders into Coral as tasks. After import Coral keeps the originals unless you choose to have them completed or deleted.</li>
+      <li><strong>Notifications</strong> — for the daily and habit reminders you turn on, scheduled on your device.</li>
+      <li><strong>Health (iPhone)</strong> — read-only, to count steps, exercise minutes, mindful minutes or sleep toward a habit you link to them. Coral never writes to Health, and never sends Health data, or anything worked out from it, to AI. The readings and the daily marks they produce stay on your iPhone: they are never synced to iCloud, so Coral on your Mac lists those habits without marks, and Coral never writes them into your notes. They leave your iPhone only inside an encrypted backup you export yourself.</li>
     </ul>
-    <p>None of this data leaves your device except through your own iCloud account.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">06</span>
-    <h2>iCloud sync</h2>
-    <p>If you enable iCloud sync, your data is stored in your private CloudKit container (<span class="pill">iCloud.com.atoam.Coral</span>). This is your personal iCloud storage — Coral has no access to it. Apple's privacy policy governs how iCloud data is handled.</p>
-    <p>iCloud sync is optional. Coral works fully offline without it.</p>
+    <h2>Analytics, tracking and crash reports</h2>
+    <p>Coral has <strong>no analytics, no advertising, no tracking and no crash reporter</strong>.</p>
+    <p>If you choose to share crash reports with app developers in your device's settings, Apple may pass anonymous crash logs to us.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">07</span>
     <h2>Data sharing</h2>
-    <p>We do not sell, rent, or share your data with any third party. There are no third parties that receive your data as part of Coral's operation.</p>
-    <p>The only exception would be if required by law — in which case we could only produce what we have: nothing, because we don't store your data.</p>
+    <p>We don't sell, rent or share your data. Apart from the services in section 04, which you use by choice, no one receives data from Coral.</p>
+    <p>We hold no copy of your content, so there is nothing for us to hand over.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">08</span>
-    <h2>Children's privacy</h2>
-    <p>Coral is not directed at children under 13. We do not knowingly collect information from children. If you believe a child has provided information through Coral, please contact us so we can address it.</p>
+    <h2>Your choices</h2>
+    <ul>
+      <li>Weather stays off unless you turn it on, and you can turn it off again in Settings or on Today.</li>
+      <li>Show any link as plain text to stop Coral fetching its card.</li>
+      <li>Clear your AI key in Settings ▸ Integrations.</li>
+      <li>Withdraw Calendar, Reminders, Notifications or Health access at any time in your device's settings.</li>
+      <li>Deleting Coral removes its data from that device. Turning off sync, or deleting Coral's data in your iCloud settings, removes the synced copy.</li>
+    </ul>
   </div>
 
   <div class="doc-section">
     <span class="section-num">09</span>
-    <h2>Changes to this policy</h2>
-    <p>If we make material changes to this policy, we'll update the date at the top of this page and, where appropriate, notify you within the app. We will never retroactively weaken your privacy protections.</p>
+    <h2>Children's privacy</h2>
+    <p>Coral isn't directed at children under 13. We don't collect personal information from anyone, children included.</p>
   </div>
 
   <div class="doc-section">
     <span class="section-num">10</span>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, we'll update the date at the top of this page and, where it matters, tell you in the app.</p>
+  </div>
+
+  <div class="doc-section">
+    <span class="section-num">11</span>
     <h2>Contact</h2>
     <p>Questions about this policy? We're easy to reach.</p>
     <div class="contact-block">
