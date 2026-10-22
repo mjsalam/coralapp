@@ -1,641 +1,600 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Coral — Notes, Tasks &amp; Life in One Place</title>
-  <meta name="description" content="Coral is a local-first productivity app for Mac and iPhone. Notes, tasks, projects, habits, and calendar — all in one place, with your notes end-to-end encrypted in sync. Always yours.">
-  <style>
-    /* ── Tokens ─────────────────────────────────────────────── */
-    :root {
-      --bg:        #FAF8F5;
-      --bg-deep:   #0D1920;
-      --bg-mid:    #142230;
-      --ink:       #1C1917;
-      --ink-2:     #6B6259;
-      --ink-3:     #A09890;
-      --coral:     #CC4638;
-      --coral-dim: #A3362B;
-      --teal:      #2B7A8A;
-      --surface:   #F0EAE3;
-      --rule:      #DDD6CE;
-      --on-deep:   #EDE8E3;
-      --on-deep-2: #7A8E9A;
-      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
-              'Helvetica Neue', system-ui, sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg:        #0D1920;
-        --bg-deep:   #060F15;
-        --bg-mid:    #0A1520;
-        --ink:       #EDE8E3;
-        --ink-2:     #8A8078;
-        --ink-3:     #5A5450;
-        --coral:     #E05A4A;
-        --coral-dim: #B8402F;
-        --teal:      #3A9AB0;
-        --surface:   #142230;
-        --rule:      #1E2D3A;
-        --on-deep:   #EDE8E3;
-        --on-deep-2: #7A8E9A;
-      }
-    }
-    :root[data-theme="light"] {
-      --bg: #FAF8F5; --bg-deep: #0D1920; --bg-mid: #142230;
-      --ink: #1C1917; --ink-2: #6B6259; --ink-3: #A09890;
-      --coral: #CC4638; --coral-dim: #A3362B; --teal: #2B7A8A;
-      --surface: #F0EAE3; --rule: #DDD6CE;
-      --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
-    }
-    :root[data-theme="dark"] {
-      --bg: #0D1920; --bg-deep: #060F15; --bg-mid: #0A1520;
-      --ink: #EDE8E3; --ink-2: #8A8078; --ink-3: #5A5450;
-      --coral: #E05A4A; --coral-dim: #B8402F; --teal: #3A9AB0;
-      --surface: #142230; --rule: #1E2D3A;
-      --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coral — notes, tasks and days, in one calm place</title>
+<meta name="description" content="Coral keeps your notes, tasks, projects and habits together, around the one page that matters most: today. Private by design, for Mac and iPhone. Free, with Coral Pro for sync, the Planner and goals.">
+<link rel="canonical" href="https://getcoralapp.com/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1B19" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    /* ── Reset ──────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 17px; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.65; }
-    a { color: var(--coral); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Coral">
+<meta property="og:url" content="https://getcoralapp.com/">
+<meta property="og:title" content="Coral — notes, tasks and days, in one calm place">
+<meta property="og:description" content="Notes, tasks, projects and habits, kept around the one page that matters most: today. Private by design, for Mac and iPhone.">
+<meta property="og:image" content="https://getcoralapp.com/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Coral on the Mac, open on the page for Thursday, October 22, beside the words: Your notes, tasks and days, in one calm place.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coral — notes, tasks and days, in one calm place">
+<meta name="twitter:description" content="Notes, tasks, projects and habits, kept around the one page that matters most: today. Private by design, for Mac and iPhone.">
+<meta name="twitter:image" content="https://getcoralapp.com/assets/img/og-image.jpg">
+<meta name="twitter:image:alt" content="Coral on the Mac, open on the page for Thursday, October 22.">
 
-    /* ── Layout helpers ─────────────────────────────────────── */
-    .wrap  { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-    .wrap-wide { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+<style>
+:root {
+  --paper: #F4F1EA;
+  --ink: #1D2420;
+  --ink-2: #4A5550;
+  --ink-3: #6E756F;
+  --rule: #D9D3C6;
+  --rule-soft: #E6E1D6;
+  --coral: #AE4630;
+  --teal: #286D67;
+  --mat: #FBF9F4;
+  --mat-line: #DCD5C7;
+  --hatch: rgba(29,36,32,0.18);
+  --focus: #286D67;
+  --serif: ui-serif, "New York", "Iowan Old Style", "Charter", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1B19; --ink: #EEEAE2; --ink-2: #B9B3A8; --ink-3: #959086;
+    --rule: #3A3834; --rule-soft: #2E2C29; --coral: #F0846A; --teal: #7ED4C1;
+    --mat: #252422; --mat-line: #3A3834; --hatch: rgba(238,234,226,0.16); --focus: #7ED4C1;
+  }
+}
 
-    /* ── Label (eyebrow) ────────────────────────────────────── */
-    .label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: var(--coral);
-    }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--serif); font-size: 19px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  font-feature-settings: "onum" 1, "kern" 1;
+  overflow-x: clip;
+}
+a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--coral); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+img { display: block; max-width: 100%; height: auto; }
+picture { display: block; }
+.sc { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    /* ── Hero ───────────────────────────────────────────────── */
-    .hero {
-      background: var(--bg-deep);
-      color: var(--on-deep);
-      padding: 112px 24px 96px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 10; background: var(--ink); color: var(--paper); padding: 10px 16px; font-family: var(--sans); font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; }
+.skip:focus { top: 12px; color: var(--paper); }
 
-    /* subtle ocean-depth background pattern */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(43,122,138,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(204,70,56,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
+/* ---------- The book's grid ---------- */
+.leaf {
+  display: grid;
+  grid-template-columns: [full-start] minmax(16px, 1fr) [plate-start] minmax(0, 8rem) [text-start] minmax(0, 36rem) [text-end] 3rem [note-start] 13rem [note-end] minmax(0, 8rem) [plate-end] minmax(16px, 1fr) [full-end];
+}
+.leaf > * { grid-column: text; }
+.wide { grid-column: text-start / note-end !important; }
+.note-col { grid-column: note !important; }
+.pl { grid-column: plate-start / plate-end !important; }
 
-    .hero-mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      margin-bottom: 32px;
-      position: relative;
-    }
+/* ---------- Running head ---------- */
+.running { border-bottom: 1px solid var(--rule); padding: 18px 0 14px; }
+.running .inner { grid-column: plate-start / plate-end; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--ink-3); }
+.wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--sans); font-weight: 600; font-size: 16px; }
+.wordmark img { width: 26px; height: 26px; }
 
-    /* Abstract coral mark — a branching node shape */
-    .coral-mark {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-    }
+/* ---------- Title page ---------- */
+.title-page { padding: 76px 0 30px; }
+.title-page .kicker { color: var(--coral); margin: 0 0 22px; }
+.title-page h1 { font-weight: 400; font-size: clamp(42px, 7.4vw, 94px); line-height: 1.02; letter-spacing: -0.025em; margin: 0; max-width: 13ch; }
+.title-page h1 em { color: var(--ink-2); }
+.lede { font-size: 21px; line-height: 1.55; margin: 30px 0 0; max-width: 32rem; }
+.epigraph { margin: 30px 0 0; padding-left: 18px; border-left: 2px solid var(--coral); font-style: italic; font-size: 22px; color: var(--ink-2); }
+.epigraph p { margin: 0; }
+.title-aside { align-self: end; color: var(--ink-2); font-family: var(--sans); font-size: 13px; line-height: 1.55; }
+.title-aside img { width: 104px; height: 104px; margin-bottom: 14px; }
+.title-aside p { margin: 0 0 8px; }
 
-    .hero-wordmark {
-      font-size: clamp(28px, 6vw, 42px);
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--on-deep);
-      line-height: 1;
-    }
+/* ---------- Store buttons ---------- */
+.stores { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; margin: 32px 0 0; font-family: var(--sans); font-size: 15px; }
+.store { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 10px 18px; border-radius: 10px; font-weight: 500; text-decoration: none; line-height: 1.2; }
+a.store { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+a.store:hover { background: var(--coral); border-color: var(--coral); color: var(--paper); }
+.store.soon { border: 1px dashed var(--ink-3); color: var(--ink-2); cursor: default; }
+.stores .terms { color: var(--ink-3); font-size: 13px; }
 
-    .hero-rule {
-      width: 40px;
-      height: 2px;
-      background: var(--coral);
-      margin: 0 auto 28px;
-      position: relative;
-    }
+/* ---------- Plates ---------- */
+figure { margin: 0; }
+.plate { margin-top: 44px; }
+.mat { background: var(--mat); border: 1px solid var(--mat-line); padding: clamp(8px, 1.8vw, 22px); }
+.mat img { border: 1px solid var(--rule-soft); width: 100%; }
+.plate figcaption { margin-top: 11px; font-size: 15px; line-height: 1.5; color: var(--ink-2); max-width: 46rem; }
+.plate figcaption b { font-weight: 400; font-variant: small-caps; letter-spacing: 0.06em; color: var(--ink); margin-right: 4px; font-size: 17px; }
+.phone .mat { padding: clamp(8px, 1.2vw, 14px); }
+.phone img { border-radius: 22px; border-color: var(--rule); }
 
-    .hero h1 {
-      font-size: clamp(22px, 4vw, 32px);
-      font-weight: 400;
-      color: var(--on-deep);
-      max-width: 560px;
-      margin: 0 auto 12px;
-      line-height: 1.4;
-      text-wrap: balance;
-    }
+.spread { display: grid; gap: 30px 26px; margin-top: 44px; }
+.spread .plate { margin-top: 0; }
+.spread.two { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.spread.pair { grid-template-columns: minmax(0, 3.3fr) minmax(0, 1fr); align-items: start; }
+.spread.calm3 { grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,2.6fr); align-items: start; }
 
-    .hero-sub {
-      font-size: 15px;
-      color: var(--on-deep-2);
-      max-width: 440px;
-      margin: 0 auto 48px;
-    }
+/* the widget: a small real render beside its words */
+.widget-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 26px; align-items: center; margin-top: 44px; }
+.widget-row .plate { margin-top: 0; }
+.widget-row .mat img { border-radius: 30px; border: none; }
+.widget-row p { margin: 0; font-size: 16.5px; color: var(--ink-2); }
 
-    .badge-row {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+/* ---------- Marginalia ---------- */
+.margin { grid-column: note; font-family: var(--sans); font-size: 13px; line-height: 1.55; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 8px; margin-top: 6px; align-self: start; }
+.margin .date { display: block; color: var(--coral); font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 3px; }
+.margin-stack { grid-column: note; align-self: start; }
+.margin-stack .margin + .margin { margin-top: 20px; }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 10px;
-      padding: 12px 20px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--on-deep);
-      transition: background 0.18s, border-color 0.18s;
-    }
-    .badge:hover {
-      background: rgba(255,255,255,0.13);
-      border-color: rgba(255,255,255,0.22);
-      text-decoration: none;
-    }
-    .badge svg { flex-shrink: 0; }
-    .badge-label { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
-    .badge-label small { font-size: 10px; font-weight: 400; opacity: 0.7; letter-spacing: 0.04em; }
+/* ---------- Parts ---------- */
+.part { padding: 96px 0 0; }
+.part-head { border-top: 1px solid var(--ink); padding-top: 14px; margin-bottom: 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.part-head .sc { color: var(--coral); }
+.part-head .folio { color: var(--ink-3); font-style: italic; font-size: 14px; }
+.part h2 { font-weight: 400; font-size: clamp(34px, 5vw, 56px); line-height: 1.08; letter-spacing: -0.022em; margin: 0 0 20px; max-width: 16ch; }
+.part p { margin: 0 0 1em; hyphens: auto; -webkit-hyphens: auto; }
+.part p.first::first-letter { float: left; font-size: 3.6em; line-height: 0.86; padding: 6px 10px 0 0; color: var(--coral); }
+.part h3 { font-weight: 400; font-size: 26px; letter-spacing: -0.01em; margin: 72px 0 6px; }
+.part .h3-lede { color: var(--ink-2); font-size: 17px; max-width: 40rem; margin: 0; }
 
-    /* ── What's inside ──────────────────────────────────────── */
-    .features {
-      padding: 96px 0;
-      background: var(--bg);
-    }
+/* ---------- Contents ---------- */
+.contents { padding: 70px 0 0; }
+.toc { list-style: none; margin: 0; padding: 0; }
+.toc li { display: flex; align-items: baseline; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--rule-soft); }
+.toc .num { width: 4.4em; white-space: nowrap; flex: none; color: var(--coral); font-variant: small-caps; letter-spacing: 0.04em; }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc a:hover { color: var(--coral); }
+.toc .lead { flex: 1; border-bottom: 1px dotted var(--ink-3); transform: translateY(-5px); opacity: 0.5; min-width: 12px; }
+.toc .pls { color: var(--ink-3); font-size: 15px; font-style: italic; white-space: nowrap; }
 
-    .features-head {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .features-head h2 {
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      margin-top: 10px;
-      text-wrap: balance;
-      line-height: 1.25;
-    }
-    .features-head p {
-      margin-top: 14px;
-      color: var(--ink-2);
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+/* ---------- Figure 1: the engraving ---------- */
+.engraving svg { width: 100%; height: auto; display: block; color: var(--ink); }
+.engraving text { font-family: var(--serif); fill: var(--ink); }
+.engraving .lbl { font-size: 15px; font-style: italic; }
+.engraving .cap { font-size: 11px; font-family: var(--sans); letter-spacing: 0.14em; text-transform: uppercase; fill: var(--ink-2); }
+.engraving .ct { font-family: var(--mono); font-size: 10.5px; fill: var(--teal); }
+.engraving .red { fill: var(--coral); }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      border-radius: 16px;
-      overflow: hidden;
-    }
+/* ---------- Ledger (privacy) ---------- */
+.ledger { margin: 34px 0 0; border-top: 1px solid var(--ink); }
+.ledger div { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--rule-soft); }
+.ledger dt { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; padding-top: 3px; }
+.ledger dt i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; }
+.ledger dd { margin: 0; font-size: 16.5px; line-height: 1.5; color: var(--ink-2); }
 
-    .feature-card {
-      background: var(--bg);
-      padding: 22px 22px 28px;
-      display: flex;
-      flex-direction: column;
-    }
+/* ---------- Price ---------- */
+.price { display: grid; grid-template-columns: 1fr 1fr; margin-top: 24px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.price > div { padding: 20px 22px 22px 0; }
+.price > div + div { border-left: 1px solid var(--rule); padding-left: 22px; }
+.price h3 { font-weight: 400; font-size: 26px; margin: 0 0 4px; }
+.price .fig { font-size: 15px; color: var(--coral); font-family: var(--sans); font-weight: 600; margin: 0 0 12px; }
+.price ul { margin: 0; padding: 0; list-style: none; font-size: 16px; line-height: 1.5; color: var(--ink-2); }
+.price li { padding: 4px 0 4px 18px; position: relative; }
+.price li::before { content: "–"; position: absolute; left: 0; color: var(--ink-3); }
+.small-note { font-size: 14px; color: var(--ink-3); font-style: italic; margin: 12px 0 0; }
 
-    .feature-media {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      margin-bottom: 22px;
-      border-radius: 14px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top, rgba(43,122,138,0.15), transparent 56%),
-        linear-gradient(180deg, rgba(13,25,32,0.04), rgba(13,25,32,0.01));
-      border: 1px solid rgba(13,25,32,0.08);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
-    }
+/* ---------- Colophon & footer ---------- */
+.colophon { padding: 110px 0 30px; }
+.colophon .orn { color: var(--coral); font-size: 22px; letter-spacing: 0.6em; margin-bottom: 16px; }
+.colophon h2 { font-weight: 400; font-variant: small-caps; letter-spacing: 0.12em; font-size: 20px; margin: 0 0 12px; }
+.colophon p { font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 0 0 0.9em; font-style: italic; }
+footer.leaf { border-top: 1px solid var(--rule); padding: 22px 0 40px; margin-top: 40px; }
+footer .inner { grid-column: plate-start / plate-end; display: flex; flex-wrap: wrap; gap: 8px 26px; font-family: var(--sans); font-size: 13px; color: var(--ink-3); }
+footer .inner a { color: var(--ink-2); text-decoration: none; }
+footer .inner a:hover { color: var(--coral); }
+footer .inner .end { margin-left: auto; }
 
-    .feature-media img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    .feature-platforms {
-      position: absolute;
-      left: 12px;
-      top: 12px;
-      display: inline-flex;
-      gap: 8px;
-      z-index: 1;
-    }
-
-    .feature-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(13,25,32,0.75);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .feature-card h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      font-size: 15px;
-      color: var(--ink-2);
-      line-height: 1.6;
-      margin-top: auto;
-    }
-
-    /* ── Privacy section ────────────────────────────────────── */
-    .privacy-section {
-      background: var(--bg-deep);
-      color: var(--on-deep);
-      padding: 96px 24px;
-      text-align: center;
-    }
-
-    .privacy-section h2 {
-      font-size: clamp(22px, 4vw, 32px);
-      font-weight: 700;
-      margin: 10px 0 16px;
-      text-wrap: balance;
-    }
-
-    .privacy-section > .wrap > p {
-      color: var(--on-deep-2);
-      max-width: 480px;
-      margin: 0 auto 56px;
-    }
-
-    .privacy-pillars {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .pillar {
-      flex: 1;
-      min-width: 180px;
-      max-width: 220px;
-      text-align: center;
-    }
-
-    .pillar-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 16px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pillar h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .pillar p {
-      font-size: 13px;
-      color: var(--on-deep-2);
-      line-height: 1.55;
-    }
-
-    .privacy-link {
-      display: inline-block;
-      margin-top: 48px;
-      font-size: 14px;
-      color: var(--coral);
-      letter-spacing: 0.03em;
-    }
-
-    /* ── Support section ────────────────────────────────────── */
-    .support-section {
-      padding: 80px 24px;
-      background: var(--surface);
-      text-align: center;
-    }
-
-    .support-section h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 10px 0 12px;
-    }
-
-    .support-section p {
-      color: var(--ink-2);
-      max-width: 400px;
-      margin: 0 auto 32px;
-      font-size: 15px;
-    }
-
-    .support-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--coral);
-      color: #fff;
-      border-radius: 10px;
-      padding: 13px 28px;
-      font-size: 15px;
-      font-weight: 600;
-      transition: background 0.16s;
-    }
-    .support-cta:hover { background: var(--coral-dim); text-decoration: none; }
-
-    /* ── Footer ─────────────────────────────────────────────── */
-    footer {
-      background: var(--bg-deep);
-      color: var(--on-deep-2);
-      padding: 40px 24px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--on-deep);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--on-deep-2);
-    }
-    .footer-links a:hover { color: var(--on-deep); }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--ink-3);
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    @media (max-width: 960px) {
-      .feature-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 88px;
-      }
-    }
-
-    /* ── Reduced motion ─────────────────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; animation: none !important; }
-    }
-  </style>
+/* ---------- Narrow ---------- */
+@media (max-width: 960px) {
+  .leaf { grid-template-columns: [full-start] 16px [plate-start text-start note-start] minmax(0, 1fr) [text-end note-end plate-end] 16px [full-end]; }
+  .leaf > *, .wide, .pl, .note-col, .margin, .margin-stack { grid-column: text !important; }
+  .running .inner, footer .inner { grid-column: text !important; }
+  .margin { border-top: none; border-left: 2px solid var(--rule); padding: 2px 0 2px 12px; margin: 4px 0 18px; }
+  .title-page { padding: 44px 0 20px; }
+  .title-aside { margin-top: 28px; display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: center; }
+  .title-aside img { width: 72px; height: 72px; margin: 0; }
+  .spread.pair { grid-template-columns: 1fr; }
+  .spread.pair .phone { width: min(62%, 280px); }
+  .spread.calm3 { grid-template-columns: 1fr 1fr; }
+  .spread.calm3 > :last-child { grid-column: 1 / -1; }
+  .part { padding-top: 72px; }
+  .part h3 { margin-top: 56px; }
+}
+@media (max-width: 640px) {
+  .running .tag { display: none; }
+}
+@media (max-width: 560px) {
+  body { font-size: 18px; }
+  .lede { font-size: 19px; }
+  .epigraph { font-size: 20px; }
+  .spread.two { grid-template-columns: 1fr; }
+  .spread.calm3 { gap: 22px 12px; }
+  .widget-row { grid-template-columns: 1fr; }
+  .widget-row .plate { width: min(70%, 250px); }
+  .ledger div { grid-template-columns: 1fr; gap: 4px; }
+  .price { grid-template-columns: 1fr; }
+  .price > div + div { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; }
+  footer .inner .end { margin-left: 0; }
+  .toc .pls { display: none; }
+}
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the contents</a>
 
-<!-- ── Hero ──────────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-mark">
-    <svg class="coral-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- Abstract branching mark: coral polyp / reef node -->
-      <circle cx="22" cy="22" r="5.5" fill="#CC4638"/>
-      <line x1="22" y1="16.5" x2="22" y2="7" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="22" cy="5.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
-      <line x1="22" y1="27.5" x2="22" y2="37" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="22" cy="38.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
-      <line x1="16.5" y1="22" x2="7" y2="22" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="5.5" cy="22" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
-      <line x1="27.5" y1="22" x2="37" y2="22" stroke="#2B7A8A" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="38.5" cy="22" r="2.5" fill="#2B7A8A" fill-opacity="0.7"/>
-      <line x1="17.8" y1="17.8" x2="11.5" y2="11.5" stroke="#CC4638" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="10.2" cy="10.2" r="2" fill="#CC4638" fill-opacity="0.4"/>
-      <line x1="26.2" y1="26.2" x2="32.5" y2="32.5" stroke="#2B7A8A" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="33.8" cy="33.8" r="2" fill="#2B7A8A" fill-opacity="0.4"/>
-    </svg>
-    <span class="hero-wordmark">Coral</span>
-  </div>
-
-  <div class="hero-rule"></div>
-
-  <h1>Your notes, tasks, and life — all in one place.</h1>
-  <p class="hero-sub">
-    A local-first productivity app for Mac and iPhone.
-    Private by design, with your notes end-to-end encrypted in sync.
-  </p>
-
-  <div class="badge-row">
-    <a class="badge" href="#" aria-label="Download on the App Store for Mac">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M13.5 2c.3.6.5 1.3.5 2 0 2.2-1.8 4-4 4S6 6.2 6 4c0-.7.2-1.4.5-2C4.5 2.8 3 4.8 3 7.1c0 .9.3 2.2.8 3.2L6 14h8l2.2-3.7c.5-1 .8-2.3.8-3.2C17 4.8 15.5 2.8 13.5 2Z" fill="currentColor" opacity="0.9"/>
-        <path d="M7 14l-1.5 4h9L13 14H7Z" fill="currentColor" opacity="0.7"/>
-      </svg>
-      <span class="badge-label">
-        <small>Download on the</small>
-        Mac App Store
-      </span>
+<header class="running leaf">
+  <div class="inner">
+    <a class="wordmark" href="#top">
+      <img src="assets/img/favicon-32.png" srcset="assets/img/favicon-32.png 1x, assets/img/icon-192.png 2x" width="26" height="26" alt="">
+      Coral
     </a>
-    <a class="badge" href="#" aria-label="Download on the App Store for iPhone">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <rect x="5" y="1" width="10" height="18" rx="2.5" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.9"/>
-        <circle cx="10" cy="16.5" r="1" fill="currentColor" opacity="0.7"/>
-      </svg>
-      <span class="badge-label">
-        <small>Download on the</small>
-        App Store for iPhone
-      </span>
-    </a>
+    <span class="sc tag">An almanac for Mac &amp; iPhone &nbsp;·&nbsp; Volume 1.0</span>
   </div>
-</section>
+</header>
 
-<!-- ── Features ───────────────────────────────────────────────── -->
-<section class="features">
-  <div class="wrap-wide">
-    <div class="features-head">
-      <span class="label">What's inside</span>
-      <h2>Everything you need.<br>Nothing you don't.</h2>
-      <p>Coral brings together the tools you use every day — without the tab-switching, the import/export, or the subscription creep.</p>
-    </div>
+<main id="main" tabindex="-1">
 
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-media">
-          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
-          <img src="assets/feature-grid/notes-writing.png" alt="Coral notes and writing view shown on Mac and iPhone">
-        </div>
-        <h3>Notes &amp; Writing</h3>
-        <p>A fast block editor with inline markdown, code blocks, callouts, and toggles. Organize notes into folders or link them to projects.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-media">
-          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
-          <img src="assets/feature-grid/tasks-projects.png" alt="Coral task and project management view shown on Mac and iPhone">
-        </div>
-        <h3>Tasks &amp; Projects</h3>
-        <p>Tasks live inside notes — no separate system to maintain. Group them under projects, assign deadlines, track status, and see progress at a glance.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-media">
-          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
-          <img src="assets/feature-grid/areas-life-balance.png" alt="Coral areas and life balance dashboard shown on Mac and iPhone">
-        </div>
-        <h3>Areas &amp; Life Balance</h3>
-        <p>Organize everything into life areas — Work, Health, Finance, Personal — and see a radar chart of where you're spending your energy.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-media">
-          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
-          <img src="assets/feature-grid/calendar-planner.png" alt="Coral calendar and planner view shown on Mac and iPhone">
-        </div>
-        <h3>Calendar &amp; Planner</h3>
-        <p>A daily and weekly planner that connects to your system calendar. Plan your day alongside your notes and tasks — everything in context.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-media">
-          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
-          <img src="assets/feature-grid/habits-streaks.png" alt="Coral habits and streak tracking view shown on Mac and iPhone">
-        </div>
-        <h3>Habits &amp; Streaks</h3>
-        <p>Build routines with daily habits, streak tracking, and completion views. Habits live in the same world as your notes and tasks.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-media">
-          <div class="feature-platforms"><span class="feature-pill">Mac</span><span class="feature-pill">iPhone</span></div>
-          <img src="assets/feature-grid/the-reef.png" alt="Coral Reef knowledge graph and backlinks view shown on Mac and iPhone">
-        </div>
-        <h3>The Reef</h3>
-        <p>An organic knowledge graph that surfaces connections between your notes — backlinks, clusters, orphaned ideas — visualized as a living map.</p>
-      </div>
+<!-- ================= Title page ================= -->
+<section class="title-page leaf" id="top" aria-labelledby="title">
+  <div>
+    <p class="sc kicker">Being a book of days</p>
+    <h1 id="title">Your notes, tasks and days, <em>in one calm place.</em></h1>
+    <p class="lede">Notes, tasks, projects and habits, kept around the one page that matters most: today. For Mac and iPhone. Free to use.</p>
+    <blockquote class="epigraph"><p>Small actions. Compound change.</p></blockquote>
+    <div class="stores" data-stores>
+      <span class="store soon">Coming soon to the App Store</span>
+      <span class="terms">Free · Coral Pro from $6.99 a month</span>
     </div>
   </div>
+  <aside class="title-aside note-col" aria-label="About this edition">
+    <img src="assets/img/app-icon-208.png" width="104" height="104" alt="The Coral app icon: a branch of coral on sand, in sunlit water">
+    <div>
+      <p><span class="sc" style="color:var(--coral)">First edition</span><br>Coral 1.0, for Mac and iPhone.</p>
+      <p>No account. No ads. No tracking. Kept on your own devices.</p>
+    </div>
+  </aside>
+
+  <figure class="plate pl">
+    <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-today-800.webp 800w, assets/img/mac-today-1100.webp 1100w, assets/img/mac-today-1600.webp 1600w, assets/img/mac-today-2200.webp 2200w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px"><img src="assets/img/mac-today-1100.jpg" srcset="assets/img/mac-today-800.jpg 800w, assets/img/mac-today-1100.jpg 1100w, assets/img/mac-today-1600.jpg 1600w, assets/img/mac-today-2200.jpg 2200w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px" width="1100" height="688" alt="Coral on the Mac, open on the page for Thursday, October 22: seven habits as chips, a line written for the day, five tasks with their times and projects, a picture of four paint samples, and the day’s hours down the right, with lunch and a pottery class among the tasks." fetchpriority="high" decoding="async"></picture></div>
+    <figcaption><b>Plate I.</b> The day’s page, Thursday the twenty-second. Seven habits, a line for the day, five tasks with their times, the paint samples for a wall, and the hours still free.</figcaption>
+  </figure>
 </section>
 
-<!-- ── Privacy ─────────────────────────────────────────────────── -->
-<section class="privacy-section">
-  <div class="wrap">
-    <span class="label">Privacy</span>
-    <h2>Local-first. Encrypted. Yours.</h2>
-    <p>Your data never touches our servers. It lives on your device and syncs through your own iCloud, with your notes end-to-end encrypted.</p>
+<!-- ================= Contents ================= -->
+<section class="contents leaf" aria-labelledby="toc-h">
+  <div>
+    <h2 class="sc" id="toc-h" style="color:var(--ink-3);margin:0 0 12px">Contents</h2>
+    <ol class="toc">
+      <li><span class="num">Part i.</span><a href="#calm">A space to think</a><span class="lead"></span><span class="pls">Plates II–IV</span></li>
+      <li><span class="num">Part ii.</span><a href="#depth">The depth under the calm</a><span class="lead"></span><span class="pls">Plates V–XX</span></li>
+      <li><span class="num">Part iii.</span><a href="#colour">Plates in colour</a><span class="lead"></span><span class="pls">Plates XXI–XXV</span></li>
+      <li><span class="num">Part iv.</span><a href="#private">Kept to yourself</a><span class="lead"></span><span class="pls">Fig. 1, a ledger</span></li>
+      <li><span class="num">Part v.</span><a href="#price">Of the price</a><span class="lead"></span><span class="pls">Terms</span></li>
+    </ol>
+  </div>
+  <div class="margin"><span class="date">How to read this</span>The plates are Coral itself, on a Mac and an iPhone, filled with an invented October.</div>
+</section>
 
-    <div class="privacy-pillars">
-      <div class="pillar">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <path d="M11 2L4 5v5c0 4.4 3 8.5 7 9.5 4-1 7-5.1 7-9.5V5L11 2Z" stroke="#EDE8E3" stroke-width="1.5" fill="none"/>
-          </svg>
-        </div>
-        <h3>End-to-end encrypted</h3>
-        <p>Note text, saved views and properties are end-to-end encrypted in iCloud sync. Pictures and files are sealed with AES-256-GCM before they leave your device.</p>
+<!-- ================= Part I. Calm ================= -->
+<section class="part leaf" id="calm" aria-labelledby="calm-h">
+  <div class="part-head"><span class="sc">Part the first</span><span class="folio">i.</span></div>
+  <h2 id="calm-h">A space to think</h2>
+  <div>
+    <p class="first">Every day has its own page, and Coral opens on it. Write, capture what occurs to you, tick what’s done. The day keeps a log of what actually happened, and the week, the month, the quarter and the year each have a page of their own beside it.</p>
+    <p>Notes hold the work itself: headings, lists, checklists, tables, code, callouts, pictures and links. Any line can become a task without leaving the page, and folders, properties and full-text search keep it all findable.</p>
+  </div>
+  <div class="margin-stack">
+    <div class="margin"><span class="date">Oct 22 · 7:30</span>Stretch, and coffee on the step. Done, and struck through.</div>
+    <div class="margin"><span class="date">Oct 22 · 9:00</span>Lookbook, spreads four to six, until eleven. Then call Lumen &amp; Oak about the proofs.</div>
+  </div>
+
+  <div class="spread calm3 pl">
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-today-330.webp 330w, assets/img/phone-today-480.webp 480w, assets/img/phone-today-660.webp 660w" sizes="(max-width: 960px) 44vw, 230px"><img src="assets/img/phone-today-480.jpg" srcset="assets/img/phone-today-330.jpg 330w, assets/img/phone-today-480.jpg 480w, assets/img/phone-today-660.jpg 660w" sizes="(max-width: 960px) 44vw, 230px" width="480" height="1043" alt="Today on iPhone, Thursday October 22: the plan, do and review line, habits as chips, the day’s line about the brackets, and five tasks with times, projects and priorities." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate II.</b> The pocket edition.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-editor-330.webp 330w, assets/img/phone-editor-480.webp 480w, assets/img/phone-editor-660.webp 660w" sizes="(max-width: 960px) 44vw, 230px"><img src="assets/img/phone-editor-480.jpg" srcset="assets/img/phone-editor-330.jpg 330w, assets/img/phone-editor-480.jpg 480w, assets/img/phone-editor-660.jpg 660w" sizes="(max-width: 960px) 44vw, 230px" width="480" height="1043" alt="A note on iPhone titled Studio layout plan, filed under the Studio Cleanup project, with a paragraph about the shelf wall and a pencil sketch of the shelves." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate III.</b> A plan, with its sketch.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-editor-560.webp 560w, assets/img/mac-editor-800.webp 800w, assets/img/mac-editor-1100.webp 1100w, assets/img/mac-editor-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 600px"><img src="assets/img/mac-editor-800.jpg" srcset="assets/img/mac-editor-560.jpg 560w, assets/img/mac-editor-800.jpg 800w, assets/img/mac-editor-1100.jpg 1100w, assets/img/mac-editor-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 600px" width="800" height="500" alt="The same note on the Mac, beside the Notes list: Studio layout plan, its area and project shown as properties, a paragraph, the sketch of the shelf wall, and a few lines on the shelves to come." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate IV.</b> The same note at the desk. Its area and project sit on it as properties, and the sketch sits in the text.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= Part II. Depth ================= -->
+<section class="part leaf" id="depth" aria-labelledby="depth-h">
+  <div class="part-head"><span class="sc">Part the second</span><span class="folio">ii.</span></div>
+  <h2 id="depth-h">The depth under the calm</h2>
+  <div>
+    <p class="first">Quiet on the surface, a great deal underneath: tasks with dates, deadlines and repeat rules, projects in phases, a planner for the hours, habits counted in amounts, saved views over everything, a board you arrange, and a map of how it all fits.</p>
+  </div>
+  <div class="margin"><span class="date">For the newly arrived</span>On the Mac, Coral imports from Todoist, OmniFocus and Things, with a preview first and Undo after.</div>
+
+  <h3 class="wide">Of tasks</h3>
+  <p class="h3-lede wide">Dates, deadlines, repeat rules, priorities and tags are simple properties on each task. Deleted something by mistake? Undo it, or find it in Recently Deleted.</p>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-tasks-560.webp 560w, assets/img/mac-tasks-800.webp 800w, assets/img/mac-tasks-1100.webp 1100w, assets/img/mac-tasks-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-tasks-800.jpg" srcset="assets/img/mac-tasks-560.jpg 560w, assets/img/mac-tasks-800.jpg 800w, assets/img/mac-tasks-1100.jpg 1100w, assets/img/mac-tasks-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="Tasks on the Mac in a saved view called Due this week: six tasks grouped under Studio Cleanup, Autumn Lookbook, 10K Training and no project, each with its due day." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate V.</b> Due this week, grouped by project.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-tasks-330.webp 330w, assets/img/phone-tasks-480.webp 480w, assets/img/phone-tasks-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-tasks-480.jpg" srcset="assets/img/phone-tasks-330.jpg 330w, assets/img/phone-tasks-480.jpg 480w, assets/img/phone-tasks-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="The same view of tasks due this week on iPhone, shown as a list." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate VI.</b> The same, in the hand.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="wide">Of projects</h3>
+  <p class="h3-lede wide">Group tasks into projects, with phases and a timeline, and projects into the areas of your life.</p>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-project-560.webp 560w, assets/img/mac-project-800.webp 800w, assets/img/mac-project-1100.webp 1100w, assets/img/mac-project-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-project-800.jpg" srcset="assets/img/mac-project-560.jpg 560w, assets/img/mac-project-800.jpg 800w, assets/img/mac-project-1100.jpg 1100w, assets/img/mac-project-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="The Studio Cleanup project on the Mac: active, six of seventeen tasks done, in the Home area, day 18 of 54 on its progress bar, the next step Order shelf brackets, and its page with an outcome, a task and notes." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate VII.</b> Studio Cleanup, day eighteen of fifty-four. Six of seventeen done, and the next step pinned above the work.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-project-330.webp 330w, assets/img/phone-project-480.webp 480w, assets/img/phone-project-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-project-480.jpg" srcset="assets/img/phone-project-330.jpg 330w, assets/img/phone-project-480.jpg 480w, assets/img/phone-project-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="The project’s timeline on iPhone, week by week: tasks done in week 43, today marked in red, and the next phase, Shelving and storage." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate VIII.</b> Laid along the weeks.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="wide">Of the hours</h3>
+  <p class="h3-lede wide">Your calendar sits beside your tasks, and Reminders come in too. With Coral Pro, the Planner lays the day out: drag a task onto the hour it will get done.</p>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-planner-560.webp 560w, assets/img/mac-planner-800.webp 800w, assets/img/mac-planner-1100.webp 1100w, assets/img/mac-planner-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-planner-800.jpg" srcset="assets/img/mac-planner-560.jpg 560w, assets/img/mac-planner-800.jpg 800w, assets/img/mac-planner-1100.jpg 1100w, assets/img/mac-planner-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="The Planner on the Mac in dark mode, Thursday October 22: tasks waiting to be planned on the left, an all-day event, and the day’s hours with planned tasks, lunch with Priya and a pottery class." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate IX.</b> The Planner, by night. What’s still to plan waits on the left.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-planner-330.webp 330w, assets/img/phone-planner-480.webp 480w, assets/img/phone-planner-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-planner-480.jpg" srcset="assets/img/phone-planner-330.jpg 330w, assets/img/phone-planner-480.jpg 480w, assets/img/phone-planner-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="The Planner’s day on iPhone in dark mode, with the week strip above and the day’s planned tasks and events." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate X.</b> The same day, pocket-sized.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="wide">Of habits</h3>
+  <p class="h3-lede wide">Daily, weekly or a few times a week, with streaks and history, or counted in amounts. On iPhone, a habit can count steps or other Apple Health readings toward its goal.</p>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-habits-560.webp 560w, assets/img/mac-habits-800.webp 800w, assets/img/mac-habits-1100.webp 1100w, assets/img/mac-habits-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-habits-800.jpg" srcset="assets/img/mac-habits-560.jpg 560w, assets/img/mac-habits-800.jpg 800w, assets/img/mac-habits-1100.jpg 1100w, assets/img/mac-habits-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="The Habits page on the Mac for the week of October 19: today’s seven habits with their streaks, an overview of completion and streaks, every habit across the week, and insights naming the most consistent habit and the one that needs attention." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XI.</b> Habits by the week, with streaks, history, and the one that needs attention.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-habits-330.webp 330w, assets/img/phone-habits-480.webp 480w, assets/img/phone-habits-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-habits-480.jpg" srcset="assets/img/phone-habits-330.jpg 330w, assets/img/phone-habits-480.jpg 480w, assets/img/phone-habits-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="Habits on iPhone: Read 20 pages at 12 of 20, Drink water at 5 of 8 glasses, each with a +1 button, among habits already kept today." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XII.</b> Counted in amounts: twelve pages of twenty, and +1 for the next.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="wide">Of views and boards</h3>
+  <p class="h3-lede wide">Coves are saved views over everything in Coral, each a table, cards or a list. The Overview is a board of cards you arrange yourself.</p>
+  <figure class="plate pl">
+    <div class="mat"><picture><source media="(prefers-color-scheme: dark)" type="image/webp" srcset="assets/img/coves-dark-800.webp 800w, assets/img/coves-dark-1100.webp 1100w, assets/img/coves-dark-1600.webp 1600w, assets/img/coves-dark-2200.webp 2200w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px"><source media="(prefers-color-scheme: dark)" type="image/jpeg" srcset="assets/img/coves-dark-800.jpg 800w, assets/img/coves-dark-1100.jpg 1100w, assets/img/coves-dark-1600.jpg 1600w, assets/img/coves-dark-2200.jpg 2200w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px"><source type="image/webp" srcset="assets/img/coves-800.webp 800w, assets/img/coves-1100.webp 1100w, assets/img/coves-1600.webp 1600w, assets/img/coves-2200.webp 2200w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px"><img src="assets/img/coves-1100.jpg" srcset="assets/img/coves-800.jpg 800w, assets/img/coves-1100.jpg 1100w, assets/img/coves-1600.jpg 1600w, assets/img/coves-2200.jpg 2200w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px" width="1100" height="645" alt="Coves on the Mac: saved views of active projects, tasks waiting on others, habit streaks, goals in progress, areas, and files and media, each shown as a card." loading="lazy" decoding="async"></picture></div>
+    <figcaption><b>Plate XIII.</b> Coves. The built-in ones are free; making your own is part of Coral Pro.</figcaption>
+  </figure>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-overview-560.webp 560w, assets/img/mac-overview-800.webp 800w, assets/img/mac-overview-1100.webp 1100w, assets/img/mac-overview-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-overview-800.jpg" srcset="assets/img/mac-overview-560.jpg 560w, assets/img/mac-overview-800.jpg 800w, assets/img/mac-overview-1100.jpg 1100w, assets/img/mac-overview-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="The Overview on the Mac: cards for the day’s hours, three top priorities, habits two of seven done, a daily review with four questions, and a quotation drifted back from the reading notes." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XIV.</b> The Overview: the day, three priorities, the habits, a daily review, and something you once wrote, drifted back.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-overview-330.webp 330w, assets/img/phone-overview-480.webp 480w, assets/img/phone-overview-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-overview-480.jpg" srcset="assets/img/phone-overview-330.jpg 330w, assets/img/phone-overview-480.jpg 480w, assets/img/phone-overview-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="The Overview on iPhone, with the day’s hours as a band, top priorities and habits." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XV.</b> The board, folded to fit.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="wide">Of capture</h3>
+  <p class="h3-lede wide">On the Mac, press Control-Option-Space from any app. Save pages from Safari, share into Coral from other apps, and keep tasks and habits on your Home Screen.</p>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-capture-560.webp 560w, assets/img/mac-capture-800.webp 800w, assets/img/mac-capture-1100.webp 1100w, assets/img/mac-capture-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-capture-800.jpg" srcset="assets/img/mac-capture-560.jpg 560w, assets/img/mac-capture-800.jpg 800w, assets/img/mac-capture-1100.jpg 1100w, assets/img/mac-capture-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="Quick Capture open over Today on the Mac, a task typed as Call the framer 3pm and read back as Today at 3:00 PM, ready to place in Today, Tomorrow or the Inbox." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XVI.</b> Type a time, and the task is placed on your day.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-capture-330.webp 330w, assets/img/phone-capture-480.webp 480w, assets/img/phone-capture-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-capture-480.jpg" srcset="assets/img/phone-capture-330.jpg 330w, assets/img/phone-capture-480.jpg 480w, assets/img/phone-capture-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="Quick Capture on iPhone with the keyboard up, the task Call the framer about the prints 3pm read back as Today at 3:00 PM." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XVII.</b> And on the phone.</figcaption>
+    </figure>
+  </div>
+  <div class="widget-row wide">
+    <figure class="plate">
+      <div class="mat"><picture><source media="(prefers-color-scheme: dark)" type="image/webp" srcset="assets/img/widget-dark-218.webp 218w, assets/img/widget-dark-436.webp 436w" sizes="218px"><source media="(prefers-color-scheme: dark)" type="image/jpeg" srcset="assets/img/widget-dark-218.jpg 218w, assets/img/widget-dark-436.jpg 436w" sizes="218px"><source type="image/webp" srcset="assets/img/widget-218.webp 218w, assets/img/widget-436.webp 436w" sizes="218px"><img src="assets/img/widget-436.jpg" srcset="assets/img/widget-218.jpg 218w, assets/img/widget-436.jpg 436w" sizes="218px" width="436" height="436" alt="The Tasks widget showing today’s tasks: Call the bank, Renew passport photos checked off, and Draft the brief." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XVIII.</b> The Tasks widget.</figcaption>
+    </figure>
+    <p>Check a task off right on the Home Screen. Today, Habits, Projects and Areas have widgets too, and a Control Center control opens Coral ready to capture.</p>
+  </div>
+
+  <h3 class="wide">Of the reef</h3>
+  <p class="h3-lede wide">With Coral Pro, the Reef maps how it fits: the areas of a life, the goals in each, and the projects, habits and tasks that serve them.</p>
+  <div class="spread pair pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/mac-reef-560.webp 560w, assets/img/mac-reef-800.webp 800w, assets/img/mac-reef-1100.webp 1100w, assets/img/mac-reef-1600.webp 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px"><img src="assets/img/mac-reef-800.jpg" srcset="assets/img/mac-reef-560.jpg 560w, assets/img/mac-reef-800.jpg 800w, assets/img/mac-reef-1100.jpg 1100w, assets/img/mac-reef-1600.jpg 1600w" sizes="(max-width: 960px) calc(100vw - 56px), 800px" width="800" height="500" alt="The Reef on the Mac: Your life at the top, three areas, Health, Home and Work, each with its goal, the projects and habits under it, and its open tasks; a slider along October sits above." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XIX.</b> The Reef. Three areas, a goal in each, and what serves it.</figcaption>
+    </figure>
+    <figure class="plate phone">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/phone-reef-330.webp 330w, assets/img/phone-reef-480.webp 480w, assets/img/phone-reef-660.webp 660w" sizes="(max-width: 960px) 280px, 240px"><img src="assets/img/phone-reef-480.jpg" srcset="assets/img/phone-reef-330.jpg 330w, assets/img/phone-reef-480.jpg 480w, assets/img/phone-reef-660.jpg 660w" sizes="(max-width: 960px) 280px, 240px" width="480" height="1043" alt="The Reef on iPhone, the same tree down one spine, starting with Health." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XX.</b> Down one spine.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= Part III. Colour ================= -->
+<section class="part leaf" id="colour" aria-labelledby="colour-h">
+  <div class="part-head"><span class="sc">Part the third</span><span class="folio">iii.</span></div>
+  <h2 id="colour-h">Plates in colour</h2>
+  <div><p class="first">Light or dark, a built-in theme or one of your own, a backdrop behind a note. Coral takes on the colour you give it.</p></div>
+  <figure class="plate pl">
+    <div class="mat"><picture><source type="image/webp" srcset="assets/img/themes-700.webp 700w, assets/img/themes-1100.webp 1100w, assets/img/themes-1400.webp 1400w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px"><img src="assets/img/themes-1100.jpg" srcset="assets/img/themes-700.jpg 700w, assets/img/themes-1100.jpg 1100w, assets/img/themes-1400.jpg 1400w" sizes="(max-width: 960px) calc(100vw - 56px), 1040px" width="1100" height="258" alt="The Themes setting: Release Room, Coral, Paper, Quiet Reef and Sunlit Sand, each shown as a swatch, and a New theme button." loading="lazy" decoding="async"></picture></div>
+    <figcaption><b>Plate XXI.</b> The built-in themes, and room for one of your own making.</figcaption>
+  </figure>
+  <div class="spread two pl">
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/week-paper-560.webp 560w, assets/img/week-paper-800.webp 800w, assets/img/week-paper-1100.webp 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px"><img src="assets/img/week-paper-800.jpg" srcset="assets/img/week-paper-560.jpg 560w, assets/img/week-paper-800.jpg 800w, assets/img/week-paper-1100.jpg 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px" width="800" height="601" alt="The Planner’s week of October 12 in a light theme: morning walks across the top, a family’s games, classes and dinners through the evenings." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XXII.</b> A family’s week, in Paper.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/week-lagoon-560.webp 560w, assets/img/week-lagoon-800.webp 800w, assets/img/week-lagoon-1100.webp 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px"><img src="assets/img/week-lagoon-800.jpg" srcset="assets/img/week-lagoon-560.jpg 560w, assets/img/week-lagoon-800.jpg 800w, assets/img/week-lagoon-1100.jpg 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px" width="800" height="601" alt="The same week in a dark theme." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XXIII.</b> The same week, by lamplight.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/note-rose-560.webp 560w, assets/img/note-rose-800.webp 800w, assets/img/note-rose-1100.webp 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px"><img src="assets/img/note-rose-800.jpg" srcset="assets/img/note-rose-560.jpg 560w, assets/img/note-rose-800.jpg 800w, assets/img/note-rose-1100.jpg 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px" width="800" height="574" alt="A note titled Focus is a superpower on a rose page over a teal backdrop, with a banner, a paragraph, two tasks for the week and a quotation." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XXIV.</b> A note set on a backdrop.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="mat"><picture><source type="image/webp" srcset="assets/img/note-rose-dark-560.webp 560w, assets/img/note-rose-dark-800.webp 800w, assets/img/note-rose-dark-1100.webp 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px"><img src="assets/img/note-rose-dark-800.jpg" srcset="assets/img/note-rose-dark-560.jpg 560w, assets/img/note-rose-dark-800.jpg 800w, assets/img/note-rose-dark-1100.jpg 1100w" sizes="(max-width: 560px) calc(100vw - 56px), (max-width: 960px) 45vw, 510px" width="800" height="574" alt="The same note in dark mode, the page dark over the same backdrop." loading="lazy" decoding="async"></picture></div>
+      <figcaption><b>Plate XXV.</b> The same note, after dark.</figcaption>
+    </figure>
+  </div>
+  <p class="small-note wide">Themes and backgrounds are part of Coral Pro; light and dark are for everyone.</p>
+</section>
+
+<!-- ================= Part IV. Private ================= -->
+<section class="part leaf" id="private" aria-labelledby="private-h">
+  <div class="part-head"><span class="sc">Part the fourth</span><span class="folio">iv.</span></div>
+  <h2 id="private-h">Kept to yourself</h2>
+  <div>
+    <p class="first">Your library lives on your devices, protected by the device’s own encryption. There is no account to make, no analytics, nothing tracked, and no Coral server for anything to be sent to.</p>
+    <p>With Coral Pro, Mac and iPhone sync through your own private iCloud, and what you write travels end-to-end encrypted.</p>
+  </div>
+  <div class="margin-stack">
+    <div class="margin"><span class="date">Of backups</span>Make an encrypted backup of the whole library, pictures and files included, whenever you like.</div>
+    <div class="margin"><span class="date">Of the weather</span>Off until you turn it on. The <a href="privacy.html">privacy policy</a> says what it, and every other outside service, receives.</div>
+  </div>
+
+  <figure class="plate pl engraving">
+    <div class="mat">
+      <svg viewBox="0 0 960 470" role="img" aria-labelledby="fig1t">
+        <title id="fig1t">Diagram: your Mac and your iPhone each hold the library. With Coral Pro they sync through your own private iCloud, your notes end-to-end encrypted on the way. In the middle, where a Coral server would be, there is nothing.</title>
+        <defs>
+          <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--hatch)" stroke-width="1.4"/></pattern>
+          <pattern id="hatch2" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="4" stroke="var(--hatch)" stroke-width="1"/></pattern>
+        </defs>
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+          <rect x="60" y="250" width="230" height="146" rx="10"/>
+          <rect x="74" y="263" width="202" height="120" rx="3" fill="url(#hatch)"/>
+          <path d="M30 406 h290 l-18 18 h-254 z"/>
+          <rect x="740" y="236" width="104" height="196" rx="20"/>
+          <rect x="750" y="252" width="84" height="164" rx="12" fill="url(#hatch)"/>
+          <path transform="translate(0 26)" d="M392 150 c-34 0 -48 -42 -16 -58 c-6 -40 50 -58 72 -28 c18 -38 86 -34 94 10 c38 -4 52 50 14 76 z" fill="url(#hatch2)"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.2" fill="var(--mat)">
+          <rect x="134" y="292" width="18" height="62"/><rect x="154" y="286" width="16" height="68"/><rect x="172" y="296" width="20" height="58"/><rect x="194" y="290" width="14" height="64" transform="rotate(8 201 322)"/>
+          <rect x="770" y="300" width="12" height="50"/><rect x="784" y="296" width="12" height="54"/><rect x="798" y="304" width="14" height="46"/>
+        </g>
+        <g fill="none" stroke-width="1.6">
+          <path id="p1" d="M260 245 C 300 180, 340 166, 380 158" stroke="var(--teal)"/>
+          <path id="p2" d="M560 158 C 640 166, 700 186, 760 230" stroke="var(--teal)"/>
+          <path d="M268 252 C 312 192, 352 178, 386 172" stroke="var(--teal)" stroke-dasharray="2 5"/>
+          <path d="M556 172 C 632 180, 688 200, 748 240" stroke="var(--teal)" stroke-dasharray="2 5"/>
+        </g>
+        <text class="ct"><textPath href="#p1" startOffset="8%">e3a1·9f0c·77b2·d41e·0aa9·5c7e</textPath></text>
+        <text class="ct"><textPath href="#p2" startOffset="12%">b80d·2e6f·c913·4a57·ee02·6b1d</textPath></text>
+        <g stroke="currentColor" fill="none" stroke-width="1.2">
+          <rect x="420" y="318" width="120" height="84" rx="4" stroke-dasharray="4 4" opacity="0.55"/>
+          <line x1="412" y1="410" x2="548" y2="310" stroke="var(--coral)" stroke-width="1.6"/>
+        </g>
+        <text class="lbl" x="175" y="452" text-anchor="middle">Your Mac. The library lives here.</text>
+        <text class="lbl" x="792" y="458" text-anchor="middle">Your iPhone. And here.</text>
+        <text class="lbl" x="470" y="30" text-anchor="middle">Your own private iCloud (with Coral Pro)</text>
+        <text class="cap" x="480" y="432" text-anchor="middle">A Coral server</text>
+        <text class="lbl red" x="480" y="452" text-anchor="middle">there isn’t one</text>
+        <text class="cap" x="610" y="128">end-to-end encrypted on the way</text>
+      </svg>
+    </div>
+    <figcaption><b>Fig. 1.</b> Where your words go. The library lives on each device. With Coral Pro it travels between them through your own iCloud, your notes end-to-end encrypted on the way. The box in the middle is empty because there is nothing there.</figcaption>
+  </figure>
+
+  <dl class="ledger wide">
+    <div><dt><i style="background:var(--teal)"></i>End-to-end encrypted</dt><dd>Note titles and text, with every task in them; saved views (coves); note properties; the amounts you log for a habit; an area’s weekly intention. The keys are kept in your iCloud Keychain, which only your own devices can unlock.</dd></div>
+    <div><dt><i style="background:var(--coral)"></i>Sealed before upload</dt><dd>Pictures and files you add to notes, with AES-256-GCM. Their keys and file names travel inside the end-to-end encryption.</dd></div>
+    <div><dt><i style="background:var(--ink-3)"></i>iCloud’s standard encryption</dt><dd>The names of projects, areas, folders, habits, goals and Currents, whether you kept a habit on a given day, and a note’s own details, such as its folder and dates. The <a href="privacy.html">privacy policy</a> lists them all.</dd></div>
+    <div><dt><i style="background:transparent;border:1.5px solid var(--ink-3)"></i>On your devices</dt><dd>The library, protected by the device’s own encryption.</dd></div>
+    <div><dt><i style="background:transparent;border:1.5px solid var(--coral)"></i>Nowhere else</dt><dd>There is no Coral server, no account, no analytics and no tracking.</dd></div>
+  </dl>
+</section>
+
+<!-- ================= Part V. Price ================= -->
+<section class="part leaf" id="price" aria-labelledby="price-h">
+  <div class="part-head"><span class="sc">Part the fifth</span><span class="folio">v.</span></div>
+  <h2 id="price-h">Of the price</h2>
+  <div class="wide">
+    <div class="price">
+      <div>
+        <h3>Coral</h3>
+        <p class="fig">Free</p>
+        <ul>
+          <li>Today and the weekly, monthly and yearly pages, notes, tasks, projects, areas and habits, on each device</li>
+          <li>The Overview, your calendar and Reminders</li>
+          <li>Widgets, Quick Capture, Safari and the share sheet</li>
+          <li>Built-in coves, and encrypted backups</li>
+        </ul>
       </div>
-      <div class="pillar">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <circle cx="11" cy="11" r="8" stroke="#EDE8E3" stroke-width="1.5" fill="none"/>
-            <path d="M11 7v4l3 2" stroke="#EDE8E3" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>No tracking, ever</h3>
-        <p>No analytics, no ad networks, no behavior tracking. We do not collect or sell your data.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect x="4" y="8" width="14" height="11" rx="2" stroke="#EDE8E3" stroke-width="1.5" fill="none"/>
-            <path d="M8 8V6a3 3 0 0 1 6 0v2" stroke="#EDE8E3" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Your iCloud, your sync</h3>
-        <p>Sync happens through your private iCloud account. Apple's infrastructure, under your control.</p>
+      <div>
+        <h3>Coral Pro</h3>
+        <p class="fig">$6.99 a month, or $49.99 a year</p>
+        <ul>
+          <li>Sync between Mac and iPhone, your notes end-to-end encrypted</li>
+          <li>The Planner and timeboxing</li>
+          <li>Goals and the Reef</li>
+          <li>Your own custom coves</li>
+          <li>Themes and backgrounds</li>
+        </ul>
       </div>
     </div>
-
-    <a class="privacy-link" href="privacy.html">Read the full Privacy Policy →</a>
+    <p class="small-note">New subscribers try Coral Pro free for 14 days. Prices in US dollars; they vary by country.</p>
   </div>
 </section>
 
-<!-- ── Support ─────────────────────────────────────────────────── -->
-<section class="support-section" id="support">
-  <div class="wrap">
-    <span class="label">Support</span>
-    <h2>We're here to help.</h2>
-    <p>Questions, bugs, or ideas? Reach out directly — you'll hear back from the person who built it.</p>
-    <a class="support-cta" href="mailto:support@getcoralapp.com">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <rect x="1" y="3" width="14" height="10" rx="2" stroke="white" stroke-width="1.4" fill="none"/>
-        <path d="M1 5l7 5 7-5" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
-      </svg>
-      support@getcoralapp.com
-    </a>
+<!-- ================= Colophon ================= -->
+<section class="colophon leaf" id="download" aria-labelledby="colophon-h">
+  <div>
+    <div class="orn" aria-hidden="true">· · ·</div>
+    <h2 id="colophon-h">Colophon</h2>
+    <p>Set in New York and SF Pro, the two faces Coral uses for its own pages. The plates are taken from Coral 1.0, filled with an invented October; Fig. 1 is drawn.</p>
+    <p>Coral is made by Mark Salam. Questions and ideas go to <a href="mailto:support@getcoralapp.com">support@getcoralapp.com</a>, where the person who built it reads them.</p>
+    <div class="stores" data-stores>
+      <span class="store soon">Coming soon to the App Store</span>
+    </div>
   </div>
 </section>
 
-<!-- ── Footer ─────────────────────────────────────────────────── -->
-<footer>
-  <div class="wrap-wide footer-inner">
-    <span class="footer-brand">Coral</span>
-    <ul class="footer-links">
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="#support">Support</a></li>
-    </ul>
+</main>
+
+<footer class="leaf">
+  <div class="inner">
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:support@getcoralapp.com">Support</a>
+    <span class="end">© 2026 Mark Salam</span>
   </div>
-  <p class="footer-copy">© 2026 Coral. Made with care for Mac and iPhone.</p>
 </footer>
 
+<script>
+/* ---- Store buttons. Flip RELEASED to true on launch day. ---- */
+const RELEASED = false;
+const STORE_URL = "https://apps.apple.com/app/id6760260509";
+
+(function () {
+  if (!RELEASED) return;
+  var html =
+    '<a class="store" href="' + STORE_URL + '">Download on the App Store</a>' +
+    '<a class="store" href="' + STORE_URL + '">Download on the Mac App Store</a>';
+  document.querySelectorAll("[data-stores]").forEach(function (el) {
+    var terms = el.querySelector(".terms");
+    el.innerHTML = html;
+    if (terms) el.appendChild(terms);
+  });
+})();
+</script>
 </body>
 </html>
