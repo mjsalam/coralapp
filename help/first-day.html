@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your first day in Coral — Coral Help</title>
+  <meta name="description" content="Coral is built around one page: today. Start there, write what's on your mind, and turn what you need to do into tasks.">
+  <link rel="icon" href="../favicon.png">
+  <style>
+    :root {
+      --bg:      #FAF8F5;
+      --ink:     #1C1917;
+      --ink-2:   #6B6259;
+      --ink-3:   #A09890;
+      --coral:   #CC4638;
+      --surface: #F0EAE3;
+      --rule:    #DDD6CE;
+      --bg-deep: #0D1920;
+      --on-deep: #EDE8E3;
+      --on-deep-2: #7A8E9A;
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+              'Helvetica Neue', system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #0D1920;
+        --ink:     #EDE8E3;
+        --ink-2:   #8A8078;
+        --ink-3:   #5A5450;
+        --coral:   #E05A4A;
+        --surface: #142230;
+        --rule:    #1E2D3A;
+        --bg-deep: #060F15;
+      }
+    }
+    :root[data-theme="light"] {
+      --bg: #FAF8F5; --ink: #1C1917; --ink-2: #6B6259; --ink-3: #A09890;
+      --coral: #CC4638; --surface: #F0EAE3; --rule: #DDD6CE;
+      --bg-deep: #0D1920; --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0D1920; --ink: #EDE8E3; --ink-2: #8A8078; --ink-3: #5A5450;
+      --coral: #E05A4A; --surface: #142230; --rule: #1E2D3A;
+      --bg-deep: #060F15; --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.7; }
+    a { color: var(--coral); }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--bg-deep);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-wordmark {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--on-deep);
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--on-deep-2);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--on-deep); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: var(--bg-deep);
+      color: var(--on-deep);
+      padding: 56px 24px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-header .label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .page-header .meta {
+      font-size: 14px;
+      color: var(--on-deep-2);
+    }
+
+    /* ── Document ── */
+    .doc {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* summary box */
+    .summary-box {
+      background: var(--surface);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 56px;
+    }
+    .summary-box p {
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .summary-box strong { color: var(--coral); font-weight: 600; }
+
+    /* sections */
+    .doc-section {
+      margin-bottom: 52px;
+    }
+    .doc-section + .doc-section {
+      border-top: 1px solid var(--rule);
+      padding-top: 48px;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink); font-size: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 14px 0;
+      padding-left: 20px;
+    }
+    li {
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    /* inline emphasis */
+    .pill {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 13px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--ink-2);
+    }
+
+    /* contact block */
+    .contact-block {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+    .contact-block p { font-size: 15px; }
+    .contact-block a { font-weight: 500; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-deep);
+      color: var(--on-deep-2);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: var(--on-deep-2); }
+    footer a:hover { color: var(--on-deep); }
+  
+    .doc h3 { font-size: 17px; font-weight: 700; margin: 28px 0 10px; }
+    .tw { overflow-x: auto; margin: 14px 0 20px; }
+    table { border-collapse: collapse; width: 100%; font-size: 15px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    th { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+    td:first-child { width: 38%; }
+    td kbd, td code { white-space: nowrap; }
+    kbd, code { font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 14px; background: var(--surface);
+      border: 1px solid var(--rule); border-radius: 4px; padding: 1px 6px; color: var(--ink); }
+    ol { margin: 14px 0; padding-left: 22px; }
+    .cards { display: grid; gap: 14px; margin-top: 8px; }
+    .card { display: block; background: var(--surface); border-radius: 10px; padding: 18px 22px; text-decoration: none; color: var(--ink); }
+    .card strong { display: block; font-size: 17px; margin-bottom: 4px; color: var(--ink); }
+    .card span { font-size: 15px; color: var(--ink-2); }
+    .card:hover strong { color: var(--coral); }
+    .soon { color: var(--ink-2); font-size: 15px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <svg width="20" height="20" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+      <circle cx="22" cy="22" r="5.5" fill="#CC4638"/>
+      <line x1="22" y1="16.5" x2="22" y2="7" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="22" cy="5.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="22" y1="27.5" x2="22" y2="37" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="22" cy="38.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="16.5" y1="22" x2="7" y2="22" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="5.5" cy="22" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="27.5" y1="22" x2="37" y2="22" stroke="#2B7A8A" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="38.5" cy="22" r="2.5" fill="#2B7A8A" fill-opacity="0.7"/>
+    </svg>
+    <span class="nav-wordmark">Coral</span>
+  </a>
+  <a class="nav-back" href="index.html">← Help</a>
+</nav>
+
+<header class="page-header">
+  <div style="max-width:680px;margin:0 auto;">
+    <span class="label">Getting started</span>
+    <h1>Your first day in Coral</h1>
+    <p class="meta">Coral is built around one page: today. Start there, write what's on your mind, and turn what you need to do into tasks.</p>
+  </div>
+</header>
+
+<main class="doc">
+
+  <div class="doc-section">
+    <span class="section-num">01</span>
+    <h2>Open Today</h2>
+    <p>Today is where Coral opens. If you're somewhere else, choose Today in the sidebar (<kbd>⌘1</kbd> on Mac) or the Today tab on iPhone.</p>
+    <p>The top of the page shows the date, your habits for the day, the week, and the day's tasks and events. Below that is the day's note, which is yours to write in.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">02</span>
+    <h2>Write</h2>
+    <p>Click or tap into the note and type. It's an ordinary note: headings, lists, tables, pictures and links all work. Start a line with <code># </code> for a heading or <code>- </code> for a bullet. Type <code>/</code> for a menu of everything you can add.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">03</span>
+    <h2>Make a task</h2>
+    <p>Any line can become a task:</p>
+    <ul>
+      <li><strong>Mac:</strong> put the cursor on the line and press <kbd>⌘↩</kbd>.</li>
+      <li><strong>iPhone:</strong> tap the task button in the keyboard toolbar.</li>
+      <li><strong>Anywhere:</strong> type <code>/task</code>, or start a bullet with <code>- [ ] </code>.</li>
+    </ul>
+    <p>A task in a note also appears in Tasks, in Today's list and in any cove that collects it. Tick it in any of those places and it's ticked everywhere.</p>
+    <p><strong>A checklist item is different.</strong> Typing <code>[ ] </code> at the start of a plain line makes a checklist item: a box that stays in its note and never shows up in your task lists. Use it for packing lists and the like.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">04</span>
+    <h2>Give it a day</h2>
+    <p>On a task line, type <code>@</code> and a day, such as <code>@tomorrow</code>, <code>@fri</code> or <code>@nov 28</code>. Add a time with <code>@tomorrow 3pm</code>. That's the day you plan to do it. For a deadline, type <code>&lt;</code> instead: <code>&lt;fri</code>.</p>
+    <p>Tasks you write on today's page are planned for today automatically.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">05</span>
+    <h2>Come back tomorrow</h2>
+    <p>Tomorrow has its own page. Anything you didn't finish comes forward, so nothing is lost. Plan the day, at the top of Today, walks you through what's left and what's next.</p>
+    <p>Next: <a href="shortcuts.html">keyboard and typed shortcuts</a>, and <a href="sync-and-privacy.html">how sync and privacy work</a>.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p><a href="../index.html">Coral</a> · <a href="index.html">Help</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="mailto:support@getcoralapp.com">support@getcoralapp.com</a> · © 2026</p>
+</footer>
+
+</body>
+</html>

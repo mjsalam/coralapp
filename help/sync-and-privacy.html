@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sync, privacy and encryption — Coral Help</title>
+  <meta name="description" content="Coral has no account, no ads and no tracking, and there is no Coral server. Here is exactly what is protected, and how.">
+  <link rel="icon" href="../favicon.png">
+  <style>
+    :root {
+      --bg:      #FAF8F5;
+      --ink:     #1C1917;
+      --ink-2:   #6B6259;
+      --ink-3:   #A09890;
+      --coral:   #CC4638;
+      --surface: #F0EAE3;
+      --rule:    #DDD6CE;
+      --bg-deep: #0D1920;
+      --on-deep: #EDE8E3;
+      --on-deep-2: #7A8E9A;
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+              'Helvetica Neue', system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #0D1920;
+        --ink:     #EDE8E3;
+        --ink-2:   #8A8078;
+        --ink-3:   #5A5450;
+        --coral:   #E05A4A;
+        --surface: #142230;
+        --rule:    #1E2D3A;
+        --bg-deep: #060F15;
+      }
+    }
+    :root[data-theme="light"] {
+      --bg: #FAF8F5; --ink: #1C1917; --ink-2: #6B6259; --ink-3: #A09890;
+      --coral: #CC4638; --surface: #F0EAE3; --rule: #DDD6CE;
+      --bg-deep: #0D1920; --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0D1920; --ink: #EDE8E3; --ink-2: #8A8078; --ink-3: #5A5450;
+      --coral: #E05A4A; --surface: #142230; --rule: #1E2D3A;
+      --bg-deep: #060F15; --on-deep: #EDE8E3; --on-deep-2: #7A8E9A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.7; }
+    a { color: var(--coral); }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--bg-deep);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-wordmark {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--on-deep);
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--on-deep-2);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--on-deep); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: var(--bg-deep);
+      color: var(--on-deep);
+      padding: 56px 24px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-header .label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .page-header .meta {
+      font-size: 14px;
+      color: var(--on-deep-2);
+    }
+
+    /* ── Document ── */
+    .doc {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* summary box */
+    .summary-box {
+      background: var(--surface);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 56px;
+    }
+    .summary-box p {
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .summary-box strong { color: var(--coral); font-weight: 600; }
+
+    /* sections */
+    .doc-section {
+      margin-bottom: 52px;
+    }
+    .doc-section + .doc-section {
+      border-top: 1px solid var(--rule);
+      padding-top: 48px;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink); font-size: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 14px 0;
+      padding-left: 20px;
+    }
+    li {
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    /* inline emphasis */
+    .pill {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 13px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--ink-2);
+    }
+
+    /* contact block */
+    .contact-block {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+    .contact-block p { font-size: 15px; }
+    .contact-block a { font-weight: 500; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-deep);
+      color: var(--on-deep-2);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: var(--on-deep-2); }
+    footer a:hover { color: var(--on-deep); }
+  
+    .doc h3 { font-size: 17px; font-weight: 700; margin: 28px 0 10px; }
+    .tw { overflow-x: auto; margin: 14px 0 20px; }
+    table { border-collapse: collapse; width: 100%; font-size: 15px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    th { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+    td:first-child { width: 38%; }
+    td kbd, td code { white-space: nowrap; }
+    kbd, code { font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 14px; background: var(--surface);
+      border: 1px solid var(--rule); border-radius: 4px; padding: 1px 6px; color: var(--ink); }
+    ol { margin: 14px 0; padding-left: 22px; }
+    .cards { display: grid; gap: 14px; margin-top: 8px; }
+    .card { display: block; background: var(--surface); border-radius: 10px; padding: 18px 22px; text-decoration: none; color: var(--ink); }
+    .card strong { display: block; font-size: 17px; margin-bottom: 4px; color: var(--ink); }
+    .card span { font-size: 15px; color: var(--ink-2); }
+    .card:hover strong { color: var(--coral); }
+    .soon { color: var(--ink-2); font-size: 15px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <svg width="20" height="20" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+      <circle cx="22" cy="22" r="5.5" fill="#CC4638"/>
+      <line x1="22" y1="16.5" x2="22" y2="7" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="22" cy="5.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="22" y1="27.5" x2="22" y2="37" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="22" cy="38.5" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="16.5" y1="22" x2="7" y2="22" stroke="#CC4638" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="5.5" cy="22" r="2.5" fill="#CC4638" fill-opacity="0.6"/>
+      <line x1="27.5" y1="22" x2="37" y2="22" stroke="#2B7A8A" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="38.5" cy="22" r="2.5" fill="#2B7A8A" fill-opacity="0.7"/>
+    </svg>
+    <span class="nav-wordmark">Coral</span>
+  </a>
+  <a class="nav-back" href="index.html">← Help</a>
+</nav>
+
+<header class="page-header">
+  <div style="max-width:680px;margin:0 auto;">
+    <span class="label">Privacy</span>
+    <h1>Sync, privacy and encryption</h1>
+    <p class="meta">Coral has no account, no ads and no tracking, and there is no Coral server. Here is exactly what is protected, and how.</p>
+  </div>
+</header>
+
+<main class="doc">
+
+  <div class="doc-section">
+    <span class="section-num">01</span>
+    <h2>Your library lives on your devices</h2>
+    <p>Your notes, tasks and everything else are stored on your Mac and your iPhone. Without Coral Pro, each device keeps its own library.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">02</span>
+    <h2>Syncing with Coral Pro</h2>
+    <p>With Coral Pro, Coral syncs your Mac and iPhone through your own private iCloud. There is nothing to set up: sign in to iCloud on both devices with the same Apple Account, and Coral starts syncing. Settings › Sync &amp; Privacy shows how sync is going, and Sync Now syncs straight away.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">03</span>
+    <h2>What is end-to-end encrypted</h2>
+    <p>When you sync with Coral Pro, these are end-to-end encrypted in iCloud, with keys in your iCloud Keychain:</p>
+    <ul>
+      <li>your notes — their titles and text, and every task in them with its dates and labels</li>
+      <li>your coves</li>
+      <li>your note properties</li>
+      <li>the amounts you log for a habit</li>
+      <li>an area's weekly intention</li>
+    </ul>
+    <p>Pictures and files are sealed by Coral with AES-256-GCM before they upload. Their keys travel inside that end-to-end encryption, so neither Apple nor Coral can read the synced copies. You never type a password for any of this.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">04</span>
+    <h2>What uses iCloud's standard encryption</h2>
+    <p>These are encrypted by iCloud, but not end to end:</p>
+    <ul>
+      <li>names of projects, areas, folders, habits, goals and Currents, and their descriptions</li>
+      <li>whether a habit was kept on a day</li>
+      <li>a note's details, such as its folder and dates</li>
+      <li>the heading you choose for the day's Log</li>
+    </ul>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">05</span>
+    <h2>On your devices</h2>
+    <p>On each device, your library is protected by the device's own encryption: FileVault on a Mac when it's turned on, and Data Protection on an iPhone with a passcode. On iPhone, the library is also part of your iCloud Backup. Apple protects that with iCloud Backup's own encryption, which is end to end only if you turn on Advanced Data Protection.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">06</span>
+    <h2>Backups you make yourself</h2>
+    <p>Settings › Backups &amp; Import makes a backup of your whole library, with every picture and file. Each backup is encrypted with AES-256-GCM using a passphrase you choose when you make it. Keep that passphrase safe: without it, the backup can't be opened, by you or anyone else.</p>
+  </div>
+  <div class="doc-section">
+    <span class="section-num">07</span>
+    <h2>Weather</h2>
+    <p>Weather on the day page is off until you turn it on in Settings › General. The <a href="../privacy.html">privacy policy</a> says what it, and every other outside service, receives.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p><a href="../index.html">Coral</a> · <a href="index.html">Help</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="mailto:support@getcoralapp.com">support@getcoralapp.com</a> · © 2026</p>
+</footer>
+
+</body>
+</html>
