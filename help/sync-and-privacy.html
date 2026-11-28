@@ -259,8 +259,8 @@
   </div>
   <div class="doc-section">
     <span class="section-num">03</span>
-    <h2>What is end-to-end encrypted</h2>
-    <p>When you sync with Coral Pro, these are end-to-end encrypted in iCloud, with keys in your iCloud Keychain:</p>
+    <h2>What is encrypted, and when it's end to end</h2>
+    <p>When you sync with Coral Pro, these are stored in encrypted fields in your own iCloud, which Coral can never read:</p>
     <ul>
       <li>your notes — their titles and text, and every task in them with its dates and labels</li>
       <li>your coves</li>
@@ -268,12 +268,18 @@
       <li>the amounts you log for a habit</li>
       <li>an area's weekly intention</li>
     </ul>
-    <p>Pictures and files are sealed by Coral with AES-256-GCM before they upload. Their keys travel inside that end-to-end encryption, so neither Apple nor Coral can read the synced copies. You never type a password for any of this.</p>
+    <p>Pictures and files are sealed by Coral with AES-256-GCM before they upload. Their keys travel inside those encrypted fields, so they get the same protection. You never type a password for any of this.</p>
+    <p>Whether Apple can read them depends on Advanced Data Protection, a setting on your Apple Account (not in Coral):</p>
+    <ul>
+      <li><strong>Off</strong> (Apple's standard protection, the default): Apple keeps the keys in its data centres, so it can help you recover your data if you lose access.</li>
+      <li><strong>On:</strong> everything above is end-to-end encrypted. Only your trusted devices hold the keys. Apple can't read it, and can't recover it for you if you lose every device and your recovery contact or recovery key.</li>
+    </ul>
+    <p>To turn it on: on iPhone, Settings › [your name] › iCloud › Advanced Data Protection; on a Mac, System Settings › [your name] › iCloud › Advanced Data Protection. You need two-factor authentication, a recovery contact or recovery key, and every device on your account up to date. Coral is covered automatically, and can't see whether it's on.</p>
   </div>
   <div class="doc-section">
     <span class="section-num">04</span>
     <h2>What uses iCloud's standard encryption</h2>
-    <p>These are encrypted by iCloud, but not end to end:</p>
+    <p>These are encrypted by iCloud, but aren't in Coral's encrypted fields:</p>
     <ul>
       <li>names of projects, areas, folders, habits, goals and Currents, and their descriptions</li>
       <li>whether a habit was kept on a day</li>

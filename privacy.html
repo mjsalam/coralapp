@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — Coral</title>
-  <meta name="description" content="Coral has no account, no ads, no analytics and no tracking. Your notes, tasks and habits stay on your devices and, with Coral Pro, sync through your own iCloud with end-to-end encryption.">
+  <meta name="description" content="Coral has no account, no ads, no analytics and no tracking. Your notes, tasks and habits stay on your devices and, with Coral Pro, sync encrypted through your own iCloud.">
   <style>
     :root {
       --bg:      #FAF8F5;
@@ -223,14 +223,14 @@
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective October 12, 2026 · Last updated October 22, 2026</p>
+    <p class="meta">Effective October 12, 2026 · Last updated November 28, 2026</p>
   </div>
 </header>
 
 <main class="doc">
 
   <div class="summary-box">
-    <p><strong>The short version:</strong> Coral has no account, no ads, no analytics and no tracking, and we have no servers. Your notes, tasks and habits live on your devices and, with Coral Pro, sync through your own iCloud, with your note and task content end-to-end encrypted. A few features you choose to use talk to outside services — the weather, picture search and link cards — and this page says exactly what they send.</p>
+    <p><strong>The short version:</strong> Coral has no account, no ads, no analytics and no tracking, and we have no servers. Your notes, tasks and habits live on your devices and, with Coral Pro, sync through your own iCloud, with your note and task content in encrypted fields we can’t read. If you turn on Apple’s Advanced Data Protection, that content is end-to-end encrypted. A few features you choose to use talk to outside services — the weather, picture search and link cards — and this page says exactly what they send.</p>
   </div>
 
   <div class="doc-section">
@@ -252,9 +252,14 @@
     <span class="section-num">03</span>
     <h2>Sync and encryption (Coral Pro)</h2>
     <p>With Coral Pro, Coral syncs through your private iCloud database (<span class="pill">iCloud.com.atoam.Coral</span>). We have no access to it.</p>
-    <p>Your note and task content — note titles and text, including the text of every task — your saved views, your note properties, the amounts you log for a habit and an area’s weekly intention are end-to-end encrypted, with keys kept in your iCloud Keychain that only your own devices can unlock. The pictures and files you add to notes are sealed by Coral with AES-256-GCM before they upload, and their keys and file names travel inside that same end-to-end encryption, so neither Apple nor we can read the synced copies.</p>
+    <p>Your note and task content — note titles and text, including the text of every task — your saved views, your note properties, the amounts you log for a habit and an area’s weekly intention are stored in CloudKit’s encrypted fields. The pictures and files you add to notes are sealed by Coral with AES-256-GCM before they upload, and their keys and file names travel inside those same encrypted fields. We can never read any of it. Who else holds the keys depends on a setting on your Apple Account:</p>
+    <ul>
+      <li><strong>Advanced Data Protection off</strong> (Apple’s standard protection, the default): Apple keeps the keys in its data centres, which lets Apple help you recover your data if you lose access.</li>
+      <li><strong>Advanced Data Protection on:</strong> this content is end-to-end encrypted. Only your trusted devices hold the keys, so Apple can’t read it and can’t recover it for you.</li>
+    </ul>
+    <p>You turn it on in Settings › [your name] › iCloud › Advanced Data Protection on iPhone, or System Settings › [your name] › iCloud › Advanced Data Protection on a Mac. Coral is covered automatically, and can’t see whether it’s on.</p>
     <p>Your iPhone's iCloud Backup, which includes Coral's library, is separate: Apple protects it with iCloud Backup's own encryption, which is end-to-end only if you turn on Advanced Data Protection.</p>
-    <p>Not everything has that extra layer. Other details — the names of your projects, areas, folders, habits, goals and Currents and their descriptions, whether you kept a habit on a given day, a note’s own details such as its folder, its dates and which project or area it belongs to, and the web address of a cover or backdrop picture you chose from Unsplash or the web — are stored in the same private database protected by iCloud's standard encryption.</p>
+    <p>Not everything is in those encrypted fields. Other details — the names of your projects, areas, folders, habits, goals and Currents and their descriptions, whether you kept a habit on a given day, a note’s own details such as its folder, its dates and which project or area it belongs to, and the web address of a cover or backdrop picture you chose from Unsplash or the web — are stored in the same private database protected by iCloud's standard encryption.</p>
     <p>Without Pro, Coral works fully on each device with no sync.</p>
   </div>
 
